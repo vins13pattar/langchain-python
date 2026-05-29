@@ -1,0 +1,125 @@
+# 🦜🔗 LangChain Python Examples
+
+A structured collection of LangChain examples covering agents, models, messages, and tools — built with Python and designed for learning the LangChain / LangGraph ecosystem.
+
+---
+
+## 📁 Project Structure
+
+```
+langchain-python/
+├── 1_agents/          # LangChain agent patterns
+├── 2_models/          # LLM model initialization & parameters
+├── 3_messages/        # Message types, history & streaming
+└── 4_tools/           # Tool definitions, schemas & dynamic selection
+```
+
+---
+
+## 📂 Modules
+
+### 🤖 1_agents — Agent Patterns
+| File | Description |
+|------|-------------|
+| `01_basic_agent.py` | Basic agent setup with tool use |
+| `02_agent_with_memory.py` | Agent with conversation memory |
+| `03_structured_output.py` | Structured/typed output from agents |
+| `04_streaming.py` | Token streaming with agents |
+| `05_middleware.py` | Middleware and error handling |
+| `06_context_and_runtime.py` | Context injection at runtime |
+| `07_full_agent_showcase.py` | End-to-end agent showcase |
+
+### 🧠 2_models — LLM Models
+| File | Description |
+|------|-------------|
+| `01_init_and_invoke.py` | Model initialization and invocation |
+| `02_parameters.py` | Configuring model parameters |
+
+### 💬 3_messages — Messages & History
+| File | Description |
+|------|-------------|
+| `01_message_types.py` | HumanMessage, AIMessage, SystemMessage |
+| `02_conversation_history.py` | Managing conversation history |
+| `03_message_content_and_streaming.py` | Content blocks and streaming |
+| `04_tool_message_loop.py` | Tool call / ToolMessage cycles |
+| `05_multimodal_messages.py` | Images and multimodal inputs |
+| `06_full_messages_showcase.py` | Full messages showcase |
+
+### 🔧 4_tools — Tools
+| File | Description |
+|------|-------------|
+| `01_basic_tools.py` | Defining and using basic tools |
+| `02_advanced_schemas.py` | Advanced Pydantic schemas for tools |
+| `03_tool_runtime_context.py` | Injecting runtime context into tools |
+| `04_tool_return_values.py` | Handling tool return values |
+| `05_dynamic_tool_selection.py` | Dynamic tool selection |
+| `06_full_tools_showcase.py` | Full tools showcase |
+
+---
+
+## ⚙️ Setup
+
+### Prerequisites
+- Python 3.11+
+- An API key for your chosen LLM provider (e.g. OpenAI, Anthropic, Google)
+
+### Installation
+
+```bash
+# Clone the repo
+git clone https://github.com/vins13pattar/langchain-python.git
+cd langchain-python
+
+# Create and activate virtual environment
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# Install dependencies
+pip install langchain langchain-openai langchain-anthropic python-dotenv
+```
+
+### Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+OPENAI_API_KEY=your_openai_api_key
+ANTHROPIC_API_KEY=your_anthropic_api_key
+# Add any other provider keys as needed
+```
+
+---
+
+## 🚀 Running Examples
+
+```bash
+# Run any example directly
+python 1_agents/01_basic_agent.py
+python 2_models/01_init_and_invoke.py
+python 3_messages/01_message_types.py
+python 4_tools/01_basic_tools.py
+```
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|-----------|---------|
+| [LangChain](https://python.langchain.com/) | LLM application framework |
+| [LangGraph](https://langchain-ai.github.io/langgraph/) | Stateful agent orchestration |
+| [OpenAI / Anthropic](https://openai.com/) | LLM providers |
+| [Pydantic](https://docs.pydantic.dev/) | Data validation & schemas |
+| [python-dotenv](https://pypi.org/project/python-dotenv/) | Environment variable management |
+
+---
+
+## 📄 License
+
+MIT License — feel free to use and adapt these examples for your own projects.
+
+---
+
+## 🙋 Author
+
+**Vinod** — [github.com/vins13pattar](https://github.com/vins13pattar)
