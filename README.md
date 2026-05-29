@@ -1,6 +1,6 @@
 # 🦜🔗 LangChain Python Examples
 
-A structured collection of LangChain examples covering agents, models, messages, tools, short-term memory, event streaming, graph streaming, structured outputs, middleware, and guardrails — built with Python and designed for learning the LangChain / LangGraph ecosystem.
+A structured collection of LangChain examples covering agents, models, messages, tools, short-term memory, event streaming, graph streaming, structured outputs, middleware, guardrails, and runtime context — built with Python and designed for learning the LangChain / LangGraph ecosystem.
 
 ---
 
@@ -17,7 +17,8 @@ langchain-python/
 ├── 7_streaming/           # Graph Streaming modes (updates, values, messages, debug)
 ├── 8_structured_output/   # Validated schemas, strategies & retry mechanisms
 ├── 9_middleware/          # Built-in middleware, HITL, custom hooks & guardrails
-└── 10_guardrails/         # PIIMiddleware, deterministic & model-based guardrails
+├── 10_guardrails/         # PIIMiddleware, deterministic & model-based guardrails
+└── 11_runtime/            # Runtime context, ToolRuntime, execution_info & server_info
 ```
 
 ---
@@ -120,6 +121,15 @@ langchain-python/
 | `04_hitl_as_guardrail.py` | `HumanInTheLoopMiddleware` for financial/database/email ops, full approve/edit/reject lifecycle |
 | `05_full_guardrails_showcase.py` | Financial advisory agent with 7-layer guardrail stack across 5 real-world scenarios |
 
+### ⚡ 11_runtime — Runtime Context
+| File | Description |
+|------|-------------|
+| `01_context_schema.py` | `context_schema` dataclass, injecting `context=` at invoke time, `@dynamic_prompt` from context |
+| `02_tool_runtime.py` | `ToolRuntime[Context]` in tools, `runtime.context`, `runtime.store`, `runtime.writer` |
+| `03_runtime_in_middleware.py` | `@before_model` / `@after_model` with `Runtime[Context]`, `execution_info`, `server_info`, RBAC |
+| `04_execution_and_server_info.py` | `thread_id`, `run_id`, `attempt`, retry detection, audit trail, production auth gate |
+| `05_full_runtime_showcase.py` | Multi-tenant CRM agent with context injection, RBAC, dynamic prompts, store, and audit logging |
+
 ---
 
 ## ⚙️ Setup
@@ -183,6 +193,7 @@ python 3_messages/01_message_types.py
 python 4_tools/01_basic_tools.py
 python 9_middleware/01_built_in_middleware.py
 python 10_guardrails/01_pii_middleware.py
+python 11_runtime/01_context_schema.py
 ```
 
 ---
