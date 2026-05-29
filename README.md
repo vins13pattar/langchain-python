@@ -80,13 +80,31 @@ pip install langchain langchain-openai langchain-anthropic python-dotenv
 
 ### Environment Variables
 
-Create a `.env` file in the root directory:
+A `.env.example` file is provided with all supported keys. Copy it and fill in your values:
+
+```bash
+cp .env.example .env
+```
+
+Then edit `.env` with your actual API keys:
 
 ```env
-OPENAI_API_KEY=your_openai_api_key
-ANTHROPIC_API_KEY=your_anthropic_api_key
-# Add any other provider keys as needed
+# OpenAI
+OPENAI_API_KEY=your_openai_api_key_here
+
+# Anthropic (Claude)
+ANTHROPIC_API_KEY=your_anthropic_api_key_here
+
+# Google Gemini
+GOOGLE_API_KEY=your_google_api_key_here
+
+# LangSmith (optional — for tracing & observability)
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_API_KEY=your_langsmith_api_key_here
+LANGCHAIN_PROJECT=langchain-python
 ```
+
+> **Note**: `.env` is gitignored and will never be committed. Only `.env.example` (with placeholder values) is tracked in version control.
 
 ---
 
