@@ -1,6 +1,6 @@
 # 🦜🔗 LangChain Python Examples
 
-A structured collection of LangChain examples covering agents, models, messages, tools, short-term memory, event streaming, graph streaming, structured outputs, and middleware — built with Python and designed for learning the LangChain / LangGraph ecosystem.
+A structured collection of LangChain examples covering agents, models, messages, tools, short-term memory, event streaming, graph streaming, structured outputs, middleware, and guardrails — built with Python and designed for learning the LangChain / LangGraph ecosystem.
 
 ---
 
@@ -16,7 +16,8 @@ langchain-python/
 ├── 6_event_streaming/     # Event Streaming v3 protocol & projections
 ├── 7_streaming/           # Graph Streaming modes (updates, values, messages, debug)
 ├── 8_structured_output/   # Validated schemas, strategies & retry mechanisms
-└── 9_middleware/          # Built-in middleware, HITL, custom hooks & guardrails
+├── 9_middleware/          # Built-in middleware, HITL, custom hooks & guardrails
+└── 10_guardrails/         # PIIMiddleware, deterministic & model-based guardrails
 ```
 
 ---
@@ -110,6 +111,15 @@ langchain-python/
 | `05_agent_loop_middleware.py` | Loop observer, rate limiter, early exit, hook firing order |
 | `06_full_middleware_showcase.py` | Customer support triage agent with 6 stacked middleware layers |
 
+### 🛑 10_guardrails — Guardrails
+| File | Description |
+|------|-------------|
+| `01_pii_middleware.py` | `PIIMiddleware` with `redact` / `mask` / `hash` / `block` strategies and custom regex detector |
+| `02_deterministic_guardrails.py` | `before_agent` class & decorator hooks, keyword filter, rate limiter, input length validation |
+| `03_model_based_guardrails.py` | `after_agent` class & decorator hooks, LLM-as-judge safety, topic relevance, quality gate |
+| `04_hitl_as_guardrail.py` | `HumanInTheLoopMiddleware` for financial/database/email ops, full approve/edit/reject lifecycle |
+| `05_full_guardrails_showcase.py` | Financial advisory agent with 7-layer guardrail stack across 5 real-world scenarios |
+
 ---
 
 ## ⚙️ Setup
@@ -172,6 +182,7 @@ python 2_models/01_init_and_invoke.py
 python 3_messages/01_message_types.py
 python 4_tools/01_basic_tools.py
 python 9_middleware/01_built_in_middleware.py
+python 10_guardrails/01_pii_middleware.py
 ```
 
 ---
