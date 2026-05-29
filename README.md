@@ -14,7 +14,8 @@ langchain-python/
 ├── 4_tools/               # Tool definitions, schemas & dynamic selection
 ├── 5_short_term_memory/   # Memory Saver, trimming & summarization
 ├── 6_event_streaming/     # Event Streaming v3 protocol & projections
-└── 7_streaming/           # Graph Streaming modes (updates, values, messages, debug)
+├── 7_streaming/           # Graph Streaming modes (updates, values, messages, debug)
+└── 8_structured_output/   # Validated schemas, strategies & retry mechanisms
 ```
 
 ---
@@ -87,6 +88,16 @@ langchain-python/
 | `03_messages_mode.py` | Low-level model token streaming |
 | `04_debug_mode.py` | Detailed internal tracing events |
 | `05_full_streaming_showcase.py` | Interactive terminal streaming showcase |
+
+### 🧱 8_structured_output — Structured Output
+| File | Description |
+|------|-------------|
+| `01_auto_strategy.py` | Auto strategy selection (Pydantic, Dataclasses, TypedDict) |
+| `02_provider_strategy.py` | Native ProviderStrategy with strict validation & JSON Schema |
+| `03_tool_strategy_basics.py` | ToolStrategy for tool-calling models |
+| `04_custom_tool_message.py` | Custom tool message representations in chat logs |
+| `05_error_handling_and_retries.py` | Automatic Pydantic retries and custom handlers |
+| `06_full_structured_output_showcase.py` | Support ticket classification and Order lookup showcase |
 
 ---
 
