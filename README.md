@@ -1,6 +1,6 @@
 # 🦜🔗 LangChain Python Examples
 
-A structured collection of LangChain examples covering agents, models, messages, and tools — built with Python and designed for learning the LangChain / LangGraph ecosystem.
+A structured collection of LangChain examples covering agents, models, messages, tools, short-term memory, event streaming, graph streaming, and structured outputs — built with Python and designed for learning the LangChain / LangGraph ecosystem.
 
 ---
 
