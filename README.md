@@ -1,6 +1,6 @@
 # 🦜🔗 LangChain Python Examples
 
-A structured collection of LangChain examples covering agents, models, messages, tools, short-term memory, event streaming, graph streaming, and structured outputs — built with Python and designed for learning the LangChain / LangGraph ecosystem.
+A structured collection of LangChain examples covering agents, models, messages, tools, short-term memory, event streaming, graph streaming, structured outputs, and middleware — built with Python and designed for learning the LangChain / LangGraph ecosystem.
 
 ---
 
@@ -15,7 +15,8 @@ langchain-python/
 ├── 5_short_term_memory/   # Memory Saver, trimming & summarization
 ├── 6_event_streaming/     # Event Streaming v3 protocol & projections
 ├── 7_streaming/           # Graph Streaming modes (updates, values, messages, debug)
-└── 8_structured_output/   # Validated schemas, strategies & retry mechanisms
+├── 8_structured_output/   # Validated schemas, strategies & retry mechanisms
+└── 9_middleware/          # Built-in middleware, HITL, custom hooks & guardrails
 ```
 
 ---
@@ -99,6 +100,16 @@ langchain-python/
 | `05_error_handling_and_retries.py` | Automatic Pydantic retries and custom handlers |
 | `06_full_structured_output_showcase.py` | Support ticket classification and Order lookup showcase |
 
+### 🛡️ 9_middleware — Middleware
+| File | Description |
+|------|-------------|
+| `01_built_in_middleware.py` | `SummarizationMiddleware`, `ModelCallLimitMiddleware`, `ToolCallLimitMiddleware`, `ToolRetryMiddleware` |
+| `02_human_in_the_loop.py` | HITL approve / edit / reject workflows with per-tool policies |
+| `03_custom_middleware.py` | `BaseMiddleware` hooks: logging, timing, cost estimation, tool-specific middleware |
+| `04_pii_detection_and_guardrails.py` | `PIIDetectionMiddleware`, content guardrails, input validation, output sanitization |
+| `05_agent_loop_middleware.py` | Loop observer, rate limiter, early exit, hook firing order |
+| `06_full_middleware_showcase.py` | Customer support triage agent with 6 stacked middleware layers |
+
 ---
 
 ## ⚙️ Setup
@@ -160,6 +171,7 @@ python 1_agents/01_basic_agent.py
 python 2_models/01_init_and_invoke.py
 python 3_messages/01_message_types.py
 python 4_tools/01_basic_tools.py
+python 9_middleware/01_built_in_middleware.py
 ```
 
 ---
