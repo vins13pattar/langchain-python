@@ -8,10 +8,13 @@ A structured collection of LangChain examples covering agents, models, messages,
 
 ```
 langchain-python/
-├── 1_agents/          # LangChain agent patterns
-├── 2_models/          # LLM model initialization & parameters
-├── 3_messages/        # Message types, history & streaming
-└── 4_tools/           # Tool definitions, schemas & dynamic selection
+├── 1_agents/              # LangChain agent patterns
+├── 2_models/              # LLM model initialization & parameters
+├── 3_messages/            # Message types, history & streaming
+├── 4_tools/               # Tool definitions, schemas & dynamic selection
+├── 5_short_term_memory/   # Memory Saver, trimming & summarization
+├── 6_event_streaming/     # Event Streaming v3 protocol & projections
+└── 7_streaming/           # Graph Streaming modes (updates, values, messages, debug)
 ```
 
 ---
@@ -34,6 +37,9 @@ langchain-python/
 |------|-------------|
 | `01_init_and_invoke.py` | Model initialization and invocation |
 | `02_parameters.py` | Configuring model parameters |
+| `03_structured_output.py` | Model structured outputs via Pydantic/TypedDict |
+| `04_multimodality.py` | Multimodal inputs & image analysis |
+| `05_tool_calling.py` | Tool binding and manual loops |
 
 ### 💬 3_messages — Messages & History
 | File | Description |
@@ -55,6 +61,33 @@ langchain-python/
 | `05_dynamic_tool_selection.py` | Dynamic tool selection |
 | `06_full_tools_showcase.py` | Full tools showcase |
 
+### 🧠 5_short_term_memory — Short-Term Memory
+| File | Description |
+|------|-------------|
+| `01_checkpointer_basics.py` | Thread-based conversation state |
+| `02_custom_state.py` | Persistent custom variables |
+| `03_trim_and_delete_messages.py` | Trimming historical messages |
+| `04_summarization_and_dynamic_prompt.py` | Compressing history & dynamic prompts |
+| `05_full_memory_showcase.py` | Full memory personal assistant |
+
+### 🌊 6_event_streaming — Event Streaming (v3 Projections)
+| File | Description |
+|------|-------------|
+| `01_stream_events_basics.py` | Modern token projections |
+| `02_tool_call_streaming.py` | Argument and execution tracking |
+| `03_state_and_values_streaming.py` | Value snapshot tracking |
+| `04_subagents_and_multiple_projections.py` | Child agent event routing |
+| `05_full_streaming_showcase.py` | Production streaming chatbot |
+
+### 📡 7_streaming — Graph Streaming (Step-Level API)
+| File | Description |
+|------|-------------|
+| `01_updates_mode.py` | Step-level incremental state updates |
+| `02_values_mode.py` | Step-level full state snapshots |
+| `03_messages_mode.py` | Low-level model token streaming |
+| `04_debug_mode.py` | Detailed internal tracing events |
+| `05_full_streaming_showcase.py` | Interactive terminal streaming showcase |
+
 ---
 
 ## ⚙️ Setup
@@ -75,7 +108,7 @@ python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 # Install dependencies
-pip install langchain langchain-openai langchain-anthropic python-dotenv
+pip install -r requirements.txt
 ```
 
 ### Environment Variables
