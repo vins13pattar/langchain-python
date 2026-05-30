@@ -1,6 +1,6 @@
 # 🦜🔗 LangChain Python Examples
 
-A structured collection of LangChain examples covering agents, models, messages, tools, short-term memory, event streaming, graph streaming, structured outputs, middleware, guardrails, runtime context, and context engineering — built with Python and designed for learning the LangChain / LangGraph ecosystem.
+A structured collection of LangChain examples covering agents, models, messages, tools, short-term memory, event streaming, graph streaming, structured outputs, middleware, guardrails, runtime context, context engineering, Model Context Protocol (MCP), and human-in-the-loop — built with Python and designed for learning the LangChain / LangGraph ecosystem.
 
 ---
 
@@ -19,7 +19,9 @@ langchain-python/
 ├── 9_middleware/          # Built-in middleware, HITL, custom hooks & guardrails
 ├── 10_guardrails/         # PIIMiddleware, deterministic & model-based guardrails
 ├── 11_runtime/            # Runtime context, ToolRuntime, execution_info & server_info
-└── 12_context_engineering/ # Model/Tool/Life-cycle context × State/Store/Runtime
+├── 12_context_engineering/ # Model/Tool/Life-cycle context × State/Store/Runtime
+├── 13_mcp/                # Model Context Protocol — servers, tools, resources, interceptors
+└── 14_human_in_the_loop/  # HITL middleware — approve, edit, reject, respond decisions
 ```
 
 ---
@@ -142,6 +144,28 @@ langchain-python/
 | `06_lifecycle_context.py` | `SummarizationMiddleware`, persistent `before_model` state updates, audit logging |
 | `07_full_context_engineering_showcase.py` | Smart Legal Research Agent — all 3 context types × all 3 data sources × 3 scenarios |
 
+### 🔌 13_mcp — Model Context Protocol
+| File | Description |
+|------|-------------|
+| `servers/math_server.py` | FastMCP stdio server — add, subtract, multiply, divide |
+| `servers/weather_server.py` | FastMCP HTTP server — get_weather, get_forecast, get_air_quality |
+| `servers/rich_server.py` | FastMCP HTTP server with structured content, resources, prompts, progress |
+| `01_mcp_basics.py` | `MultiServerMCPClient`, `get_tools()`, stateless vs stateful sessions |
+| `02_mcp_transports.py` | stdio vs HTTP transports, custom headers, multi-server config |
+| `03_mcp_tools_resources_prompts.py` | Tools, structured content, Resources (Blob), Prompts (messages) |
+| `04_mcp_interceptors.py` | Logging, runtime context, store, state auth, `request.override()`, retry, composition |
+| `05_mcp_callbacks.py` | `on_progress`, `on_logging_message`, `on_elicitation` (accept/decline/cancel) |
+| `06_full_mcp_showcase.py` | Smart Data Assistant — interceptors + callbacks + middleware + multi-turn memory |
+
+### 🧑‍⚖️ 14_human_in_the_loop — Human-in-the-Loop (HITL)
+| File | Description |
+|------|-------------|
+| `01_hitl_basics.py` | `HumanInTheLoopMiddleware`, `interrupt_on`, `version="v2"`, approve, reject, auto-approve |
+| `02_decision_types.py` | All 4 types: approve, edit (args + tool swap), reject, respond |
+| `03_multiple_decisions.py` | Multiple simultaneous interrupts, mixed decisions, sequential rounds |
+| `04_hitl_streaming.py` | `stream()` with `stream_mode=["updates","messages"]`, interrupt detection in stream |
+| `05_full_hitl_showcase.py` | Secure Financial Operations Agent — risk-tiered policies, all 4 decisions, streaming |
+
 ---
 
 ## ⚙️ Setup
@@ -207,6 +231,8 @@ python 9_middleware/01_built_in_middleware.py
 python 10_guardrails/01_pii_middleware.py
 python 11_runtime/01_context_schema.py
 python 12_context_engineering/01_model_context_system_prompt.py
+python 13_mcp/01_mcp_basics.py
+python 14_human_in_the_loop/01_hitl_basics.py
 ```
 
 ---
