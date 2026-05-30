@@ -21,7 +21,9 @@ langchain-python/
 ├── 11_runtime/            # Runtime context, ToolRuntime, execution_info & server_info
 ├── 12_context_engineering/ # Model/Tool/Life-cycle context × State/Store/Runtime
 ├── 13_mcp/                # Model Context Protocol — servers, tools, resources, interceptors
-└── 14_human_in_the_loop/  # HITL middleware — approve, edit, reject, respond decisions
+├── 14_human_in_the_loop/  # HITL middleware — approve, edit, reject, respond decisions
+├── 15_multi_agent/        # Subagents, Handoffs, Skills, Router patterns
+└── 16_retrieval/          # RAG — knowledge base, 2-step, agentic, hybrid
 ```
 
 ---
@@ -166,6 +168,25 @@ langchain-python/
 | `04_hitl_streaming.py` | `stream()` with `stream_mode=["updates","messages"]`, interrupt detection in stream |
 | `05_full_hitl_showcase.py` | Secure Financial Operations Agent — risk-tiered policies, all 4 decisions, streaming |
 
+### 🤖 15_multi_agent — Multi-Agent Systems
+| File | Description |
+|------|-------------|
+| `01_subagents.py` | Tool-per-agent wrapping, `ToolRuntime`, `Command`+`InjectedToolCallId`, parallel calls |
+| `02_subagents_dispatch.py` | Single dispatch `task` tool, enum constraint, tool-based discovery, async background jobs |
+| `03_handoffs.py` | `current_step` state, `Command` transitions, `@dynamic_prompt`, `@wrap_model_call` |
+| `04_skills.py` | On-demand skill loading, stateful reuse across turns, Store cache |
+| `05_router.py` | LLM structured output routing, keyword routing, fan-out+merge, async parallel, nested |
+| `06_full_multi_agent_showcase.py` | Enterprise Assistant — Router dispatches to Skills / Subagents / Handoffs |
+
+### 🔍 16_retrieval — Retrieval-Augmented Generation (RAG)
+| File | Description |
+|------|-------------|
+| `01_knowledge_base.py` | Document loaders, text splitters, embeddings, vector stores, retrievers |
+| `02_two_step_rag.py` | 2-Step RAG — fixed retrieve-then-generate, LCEL chains, multi-query |
+| `03_agentic_rag.py` | Agentic RAG — agent with retrieval tools, fetch_url, multi-source |
+| `04_hybrid_rag.py` | Hybrid RAG — query enhancement, retrieval validation, answer quality check |
+| `05_full_retrieval_showcase.py` | Smart Q&A Assistant — all three RAG architectures with routing |
+
 ---
 
 ## ⚙️ Setup
@@ -233,6 +254,8 @@ python 11_runtime/01_context_schema.py
 python 12_context_engineering/01_model_context_system_prompt.py
 python 13_mcp/01_mcp_basics.py
 python 14_human_in_the_loop/01_hitl_basics.py
+python 15_multi_agent/01_subagents.py
+python 16_retrieval/01_knowledge_base.py
 ```
 
 ---
