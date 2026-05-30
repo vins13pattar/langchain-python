@@ -1,6 +1,6 @@
 # 🦜🔗 LangChain Python Examples
 
-A structured collection of LangChain examples covering agents, models, messages, tools, short-term memory, event streaming, graph streaming, structured outputs, middleware, guardrails, and runtime context — built with Python and designed for learning the LangChain / LangGraph ecosystem.
+A structured collection of LangChain examples covering agents, models, messages, tools, short-term memory, event streaming, graph streaming, structured outputs, middleware, guardrails, runtime context, and context engineering — built with Python and designed for learning the LangChain / LangGraph ecosystem.
 
 ---
 
@@ -18,7 +18,8 @@ langchain-python/
 ├── 8_structured_output/   # Validated schemas, strategies & retry mechanisms
 ├── 9_middleware/          # Built-in middleware, HITL, custom hooks & guardrails
 ├── 10_guardrails/         # PIIMiddleware, deterministic & model-based guardrails
-└── 11_runtime/            # Runtime context, ToolRuntime, execution_info & server_info
+├── 11_runtime/            # Runtime context, ToolRuntime, execution_info & server_info
+└── 12_context_engineering/ # Model/Tool/Life-cycle context × State/Store/Runtime
 ```
 
 ---
@@ -130,6 +131,17 @@ langchain-python/
 | `04_execution_and_server_info.py` | `thread_id`, `run_id`, `attempt`, retry detection, audit trail, production auth gate |
 | `05_full_runtime_showcase.py` | Multi-tenant CRM agent with context injection, RBAC, dynamic prompts, store, and audit logging |
 
+### 🧠 12_context_engineering — Context Engineering
+| File | Description |
+|------|-------------|
+| `01_model_context_system_prompt.py` | `@dynamic_prompt` from State, Store, and Runtime Context; combined multi-source prompt |
+| `02_model_context_messages.py` | `@wrap_model_call` transient injection: file context, writing style, compliance rules |
+| `03_model_context_tools_and_model.py` | Dynamic tool filtering (RBAC, feature flags, auth) and dynamic model switching (cost tier) |
+| `04_model_context_response_format.py` | Dynamic Pydantic schema selection by conversation stage, verbosity pref, and role |
+| `05_tool_context_reads_writes.py` | Tool reads from state/store/context; writes via `Command` and `store.put()` |
+| `06_lifecycle_context.py` | `SummarizationMiddleware`, persistent `before_model` state updates, audit logging |
+| `07_full_context_engineering_showcase.py` | Smart Legal Research Agent — all 3 context types × all 3 data sources × 3 scenarios |
+
 ---
 
 ## ⚙️ Setup
@@ -194,6 +206,7 @@ python 4_tools/01_basic_tools.py
 python 9_middleware/01_built_in_middleware.py
 python 10_guardrails/01_pii_middleware.py
 python 11_runtime/01_context_schema.py
+python 12_context_engineering/01_model_context_system_prompt.py
 ```
 
 ---
