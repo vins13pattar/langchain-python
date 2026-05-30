@@ -23,7 +23,8 @@ langchain-python/
 ├── 13_mcp/                # Model Context Protocol — servers, tools, resources, interceptors
 ├── 14_human_in_the_loop/  # HITL middleware — approve, edit, reject, respond decisions
 ├── 15_multi_agent/        # Subagents, Handoffs, Skills, Router patterns
-└── 16_retrieval/          # RAG — knowledge base, 2-step, agentic, hybrid
+├── 16_retrieval/          # RAG — knowledge base, 2-step, agentic, hybrid
+└── 17_longterm_memory/    # Store — semantic/episodic/procedural memory across sessions
 ```
 
 ---
@@ -186,6 +187,15 @@ langchain-python/
 | `03_agentic_rag.py` | Agentic RAG — agent with retrieval tools, fetch_url, multi-source |
 | `04_hybrid_rag.py` | Hybrid RAG — query enhancement, retrieval validation, answer quality check |
 | `05_full_retrieval_showcase.py` | Smart Q&A Assistant — all three RAG architectures with routing |
+
+### 🧠 17_longterm_memory — Long-Term Memory
+| File | Description |
+|------|-------------|
+| `01_store_basics.py` | `InMemoryStore`, `IndexConfig`, `put/get/delete/search`, namespace patterns, `StoreValue` |
+| `02_read_memory_in_tools.py` | `ToolRuntime[Context]`, `context_schema`, `runtime.store.get()`, multi-namespace reads, semantic search |
+| `03_write_memory_from_tools.py` | `TypedDict` schemas, `save_user_info`, episodic events, procedural rules, delete |
+| `04_memory_types.py` | Semantic, episodic, procedural memory types, extraction LLM, cross-memory synthesis |
+| `05_full_longterm_memory_showcase.py` | Personal AI — learn in session 1, recall in session 2, multi-user isolation |
 
 ---
 
