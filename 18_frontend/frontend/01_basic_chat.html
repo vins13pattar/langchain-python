@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LangChain Streaming Chat — Basic Pattern</title>
+<meta name="description" content="Basic streaming chat using the LangGraph SSE streaming API. Mirrors the useStream() pattern from @langchain/react.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #030B14;
+    --surface: #0D1B2A;
+    --surface2: #132232;
+    --border: #1E3448;
+    --accent: #3B82F6;
+    --accent-glow: rgba(59,130,246,0.25);
+    --accent2: #8B5CF6;
+    --success: #10B981;
+    --warn: #F59E0B;
+    --text: #E2EAF4;
+    --text-muted: #7A9BBD;
+    --text-dim: #4A6A8A;
+    --user-bubble: #1E3553;
+    --ai-bubble: #111D2C;
+    --tool-bg: #0A1A12;
+    --tool-border: #0F3A20;
+    --tool-text: #34D399;
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;min-height:100vh}
+
+  /* Animated background gradient */
+  body::before{
+    content:'';position:fixed;inset:0;
+    background:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(59,130,246,0.08) 0%,transparent 60%),
+               radial-gradient(ellipse 60% 40% at 80% 80%,rgba(139,92,246,0.07) 0%,transparent 60%);
+    pointer-events:none;z-index:0;
+  }
+
+  /* ── HEADER ───────────────────────────────────────────────── */
+  header{
+    position:relative;z-index:10;
+    display:flex;align-items:center;gap:12px;padding:16px 24px;
+    background:rgba(13,27,42,0.8);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+  }
+  .logo{
+    width:36px;height:36px;border-radius:10px;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    display:flex;align-items:center;justify-content:center;font-size:18px;
+    box-shadow:0 0 20px var(--accent-glow);
+  }
+  header h1{font-size:17px;font-weight:600;letter-spacing:-0.02em}
+  header p{font-size:13px;color:var(--text-muted);margin-top:1px}
+  .status-badge{
+    margin-left:auto;display:flex;align-items:center;gap:6px;
+    font-size:12px;color:var(--text-muted);
+    background:var(--surface2);border:1px solid var(--border);
+    padding:5px 10px;border-radius:99px;
+  }
+  .status-dot{width:7px;height:7px;border-radius:50%;background:var(--success);
+    animation:pulse 2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+  .status-dot.offline{background:var(--warn);animation:none}
+
+  /* ── MAIN LAYOUT ──────────────────────────────────────────── */
+  main{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;overflow:hidden;max-width:860px;width:100%;margin:0 auto;padding:0 16px}
+
+  /* ── MESSAGES ─────────────────────────────────────────────── */
+  #messages{
+    flex:1;overflow-y:auto;padding:24px 0;
+    display:flex;flex-direction:column;gap:20px;
+    scrollbar-width:thin;scrollbar-color:var(--border) transparent;
+  }
+  #messages::-webkit-scrollbar{width:4px}
+  #messages::-webkit-scrollbar-track{background:transparent}
+  #messages::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+  .message{display:flex;gap:12px;animation:fadeUp 0.25s ease}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  .message.user{flex-direction:row-reverse}
+
+  .avatar{
+    width:34px;height:34px;border-radius:9px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;font-size:15px;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    box-shadow:0 0 14px var(--accent-glow);
+  }
+  .message.user .avatar{background:linear-gradient(135deg,#374151,#1F2937)}
+
+  .bubble{
+    max-width:72%;padding:14px 18px;border-radius:var(--radius);
+    line-height:1.65;font-size:14.5px;
+  }
+  .message.user .bubble{
+    background:var(--user-bubble);border:1px solid #274261;
+    border-top-right-radius:4px;
+  }
+  .message.ai .bubble{
+    background:var(--ai-bubble);border:1px solid var(--border);
+    border-top-left-radius:4px;
+  }
+
+  /* ── TOOL CALLS ───────────────────────────────────────────── */
+  .tool-call{
+    display:flex;flex-direction:column;gap:6px;
+    background:var(--tool-bg);border:1px solid var(--tool-border);
+    border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:10px;
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+  }
+  .tool-header{display:flex;align-items:center;gap:8px}
+  .tool-icon{font-size:15px}
+  .tool-name{color:var(--tool-text);font-weight:500}
+  .tool-status{margin-left:auto;font-size:11px;color:var(--text-muted)}
+  .tool-args{color:#7DCAA2;opacity:0.8;margin-top:4px;word-break:break-all}
+  .tool-result{
+    color:#A7F3D0;background:rgba(16,185,129,0.05);
+    border-top:1px solid var(--tool-border);margin-top:8px;padding-top:8px;
+  }
+  .tool-call.running .tool-name::after{
+    content:'';display:inline-block;width:6px;height:6px;
+    border-radius:50%;background:var(--tool-text);margin-left:8px;
+    animation:pulse 0.8s ease-in-out infinite;
+  }
+
+  /* ── TYPING INDICATOR ─────────────────────────────────────── */
+  .typing-dots span{
+    display:inline-block;width:6px;height:6px;border-radius:50%;
+    background:var(--text-muted);margin:0 2px;
+    animation:bounce 1.2s ease-in-out infinite;
+  }
+  .typing-dots span:nth-child(2){animation-delay:0.15s}
+  .typing-dots span:nth-child(3){animation-delay:0.3s}
+  @keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-6px)}}
+
+  /* ── EMPTY STATE ──────────────────────────────────────────── */
+  #empty-state{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    flex:1;gap:12px;color:var(--text-dim);text-align:center;padding:40px 20px;
+  }
+  #empty-state .hero-icon{
+    font-size:52px;filter:drop-shadow(0 0 16px rgba(59,130,246,0.3));
+    margin-bottom:6px;
+  }
+  #empty-state h2{font-size:20px;font-weight:600;color:var(--text-muted)}
+  #empty-state p{font-size:14px;max-width:340px;line-height:1.6}
+
+  .suggestion-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px}
+  .chip{
+    background:var(--surface2);border:1px solid var(--border);
+    padding:7px 14px;border-radius:99px;font-size:13px;color:var(--text-muted);
+    cursor:pointer;transition:all 0.2s;
+  }
+  .chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(59,130,246,0.08)}
+
+  /* ── INPUT AREA ───────────────────────────────────────────── */
+  #input-area{
+    padding:16px 0 20px;
+    background:linear-gradient(to top,var(--bg) 80%,transparent);
+  }
+  .input-wrapper{
+    display:flex;align-items:flex-end;gap:10px;
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius);padding:12px 14px;
+    transition:border-color 0.2s,box-shadow 0.2s;
+  }
+  .input-wrapper:focus-within{
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px var(--accent-glow);
+  }
+  #user-input{
+    flex:1;background:none;border:none;outline:none;
+    color:var(--text);font-family:'Inter',sans-serif;font-size:14.5px;
+    resize:none;max-height:160px;line-height:1.6;
+    min-height:24px;
+  }
+  #user-input::placeholder{color:var(--text-dim)}
+  #send-btn{
+    width:38px;height:38px;border-radius:10px;border:none;cursor:pointer;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:white;display:flex;align-items:center;justify-content:center;
+    transition:all 0.2s;flex-shrink:0;
+    box-shadow:0 0 16px var(--accent-glow);
+  }
+  #send-btn:hover:not(:disabled){transform:scale(1.06);box-shadow:0 0 22px var(--accent-glow)}
+  #send-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+  #send-btn svg{width:18px;height:18px}
+
+  .input-footer{display:flex;align-items:center;justify-content:space-between;margin-top:8px;padding:0 4px}
+  .input-hint{font-size:12px;color:var(--text-dim)}
+  #thread-display{font-size:12px;color:var(--text-dim);font-family:'JetBrains Mono',monospace}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🤖</div>
+  <div>
+    <h1>LangChain Streaming Chat</h1>
+    <p>Pattern 01 — Basic message streaming with tool calls</p>
+  </div>
+  <div class="status-badge">
+    <div class="status-dot" id="status-dot"></div>
+    <span id="status-text">Demo mode</span>
+  </div>
+</header>
+
+<main>
+  <div id="messages">
+    <div id="empty-state">
+      <div class="hero-icon">✨</div>
+      <h2>What can I help you with?</h2>
+      <p>This chat streams tokens from a LangChain agent in real-time. Try asking about the weather or doing a calculation.</p>
+      <div class="suggestion-chips">
+        <div class="chip" onclick="sendSuggestion(this)">What's the weather in Tokyo?</div>
+        <div class="chip" onclick="sendSuggestion(this)">Calculate 247 * 38</div>
+        <div class="chip" onclick="sendSuggestion(this)">Search for LangChain news</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="input-area">
+    <div class="input-wrapper">
+      <textarea id="user-input" placeholder="Ask anything..." rows="1" id="user-input"></textarea>
+      <button id="send-btn" onclick="sendMessage()" title="Send message">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </div>
+    <div class="input-footer">
+      <span class="input-hint">Enter to send · Shift+Enter for new line</span>
+      <span id="thread-display">thread: <span id="thread-id">new</span></span>
+    </div>
+  </div>
+</main>
+
+<script>
+// ── Configuration ─────────────────────────────────────────────────
+const API_URL   = 'http://localhost:8000/chat/stream';
+const USE_DEMO  = true;   // set false to connect to real server
+
+// ── State ─────────────────────────────────────────────────────────
+let threadId   = crypto.randomUUID().slice(0, 8);
+let isStreaming = false;
+let currentAiBubble = null;
+
+document.getElementById('thread-id').textContent = threadId;
+
+// ── Auto-resize textarea ──────────────────────────────────────────
+const textarea = document.getElementById('user-input');
+textarea.addEventListener('input', () => {
+  textarea.style.height = 'auto';
+  textarea.style.height = Math.min(textarea.scrollHeight, 160) + 'px';
+});
+textarea.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+});
+
+// ── DOM helpers ───────────────────────────────────────────────────
+function hideEmpty() {
+  const empty = document.getElementById('empty-state');
+  if (empty) empty.remove();
+}
+
+function appendMessage(role, content = '') {
+  const msgs = document.getElementById('messages');
+  const div  = document.createElement('div');
+  div.className = `message ${role}`;
+  const isUser = role === 'user';
+  div.innerHTML = `
+    <div class="avatar">${isUser ? '👤' : '🤖'}</div>
+    <div class="bubble">${isUser ? escapeHtml(content) : content}</div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div.querySelector('.bubble');
+}
+
+function appendTypingIndicator() {
+  const msgs = document.getElementById('messages');
+  const div  = document.createElement('div');
+  div.className = 'message ai';
+  div.id = 'typing';
+  div.innerHTML = `
+    <div class="avatar">🤖</div>
+    <div class="bubble">
+      <div class="typing-dots"><span></span><span></span><span></span></div>
+    </div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+function removeTyping() {
+  document.getElementById('typing')?.remove();
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── Tool call rendering ───────────────────────────────────────────
+function createToolCard(name, args) {
+  const card = document.createElement('div');
+  card.className = 'tool-call running';
+  card.innerHTML = `
+    <div class="tool-header">
+      <span class="tool-icon">⚙️</span>
+      <span class="tool-name">${escapeHtml(name)}()</span>
+      <span class="tool-status">running...</span>
+    </div>
+    <div class="tool-args">${escapeHtml(JSON.stringify(args, null, 2))}</div>`;
+  return card;
+}
+
+function finishToolCard(card, output) {
+  card.classList.remove('running');
+  card.querySelector('.tool-status').textContent = '✓ done';
+  const result = document.createElement('div');
+  result.className = 'tool-result';
+  result.textContent = output;
+  card.appendChild(result);
+}
+
+// ── Demo streaming simulation ─────────────────────────────────────
+const DEMO_RESPONSES = {
+  weather: {
+    tool: { name: 'get_weather', args: { city: 'Tokyo' }, result: '🌤️ Partly cloudy, 19°C, 60% humidity' },
+    text: "Based on the current weather data, Tokyo is experiencing partly cloudy skies with a pleasant temperature of **19°C** and 60% humidity. A light jacket might be comfortable, but overall it's a nice day! 🌤️",
+  },
+  calculate: {
+    tool: { name: 'calculate', args: { expression: '247 * 38' }, result: '247 * 38 = 9386' },
+    text: "The result of **247 × 38 = 9,386**. Here's how: 247 × 38 = 247 × 40 − 247 × 2 = 9,880 − 494 = 9,386 ✓",
+  },
+  search: {
+    tool: { name: 'search_web', args: { query: 'LangChain news' }, result: 'Found 3 articles about recent LangChain developments...' },
+    text: "Here are the latest developments in the LangChain ecosystem: **LangChain 1.x** introduced `create_agent` as the primary agent builder, streamlining agent creation significantly. The `useStream` hook for React/Vue/Svelte makes building real-time frontends much easier. LangGraph now supports full multi-agent orchestration. 🚀",
+  },
+  default: {
+    text: "I'm a streaming AI assistant powered by LangChain! I can help with questions, calculations, weather lookups, and web searches. What would you like to know? ✨",
+  }
+};
+
+async function streamDemo(message, bubble) {
+  let response = DEMO_RESPONSES.default;
+  const lower  = message.toLowerCase();
+  if (lower.includes('weather') || lower.includes('tokyo') || lower.includes('london')) response = DEMO_RESPONSES.weather;
+  else if (lower.includes('calc') || lower.match(/\d+\s*[\*\+\-\/]\s*\d+/)) response = DEMO_RESPONSES.calculate;
+  else if (lower.includes('search') || lower.includes('news') || lower.includes('langchain')) response = DEMO_RESPONSES.search;
+
+  // Show tool call if applicable
+  if (response.tool) {
+    await sleep(400);
+    const toolCard = createToolCard(response.tool.name, response.tool.args);
+    bubble.appendChild(toolCard);
+    await sleep(1200);
+    finishToolCard(toolCard, response.tool.result);
+    await sleep(300);
+  }
+
+  // Stream text token by token
+  const text   = response.text;
+  const tokens = text.match(/\S+|\s+/g) || [];
+  let built    = response.tool ? '<br>' : '';
+
+  for (const token of tokens) {
+    built += escapeHtml(token);
+    bubble.innerHTML = built;
+    document.getElementById('messages').scrollTop = 99999;
+    await sleep(25 + Math.random() * 30);
+  }
+}
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+// ── Real server streaming ─────────────────────────────────────────
+async function streamFromServer(message, bubble) {
+  const res = await fetch(API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message, thread_id: threadId }),
+  });
+
+  if (!res.ok) throw new Error(`Server error: ${res.status}`);
+
+  const reader  = res.body.getReader();
+  const decoder = new TextDecoder();
+  let   text    = '';
+  let   activeTool = null;
+  let   activeCard = null;
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+
+    const lines = decoder.decode(value).split('\n');
+    for (const line of lines) {
+      if (!line.startsWith('data: ')) continue;
+      const event = JSON.parse(line.slice(6));
+
+      if (event.type === 'token') {
+        text += event.content;
+        bubble.innerHTML = (activeCard ? bubble.innerHTML : '') + escapeHtml(text);
+        document.getElementById('messages').scrollTop = 99999;
+      } else if (event.type === 'tool_start') {
+        activeCard = createToolCard(event.tool, event.input);
+        bubble.appendChild(activeCard);
+      } else if (event.type === 'tool_end') {
+        if (activeCard) finishToolCard(activeCard, event.output);
+        activeCard = null;
+        text = '';
+      } else if (event.type === 'done') {
+        break;
+      } else if (event.type === 'error') {
+        throw new Error(event.message);
+      }
+    }
+  }
+}
+
+// ── Main send function ────────────────────────────────────────────
+async function sendMessage() {
+  const msg = textarea.value.trim();
+  if (!msg || isStreaming) return;
+
+  hideEmpty();
+  isStreaming = true;
+  document.getElementById('send-btn').disabled = true;
+  textarea.value = '';
+  textarea.style.height = 'auto';
+
+  appendMessage('user', msg);
+
+  const typing = appendTypingIndicator();
+  await sleep(300);
+  removeTyping();
+
+  const bubble = appendMessage('ai', '');
+  currentAiBubble = bubble;
+
+  try {
+    if (USE_DEMO) {
+      await streamDemo(msg, bubble);
+    } else {
+      await streamFromServer(msg, bubble);
+    }
+  } catch (err) {
+    bubble.innerHTML = `<span style="color:#F87171">⚠️ Error: ${escapeHtml(err.message)}</span>`;
+    document.getElementById('status-dot').className = 'status-dot offline';
+    document.getElementById('status-text').textContent = 'Disconnected';
+  } finally {
+    isStreaming = false;
+    document.getElementById('send-btn').disabled = false;
+    textarea.focus();
+  }
+}
+
+function sendSuggestion(chip) {
+  textarea.value = chip.textContent;
+  sendMessage();
+}
+</script>
+</body>
+</html>

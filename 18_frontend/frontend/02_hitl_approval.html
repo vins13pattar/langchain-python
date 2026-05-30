@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Human-in-the-Loop — Agent Approval UI</title>
+<meta name="description" content="HITL frontend pattern: agent pauses for human approval before executing tools. Approve, reject, or edit tool calls.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #030B14;
+    --surface: #0D1B2A;
+    --surface2: #112030;
+    --border: #1E3448;
+    --accent: #3B82F6;
+    --accent-glow: rgba(59,130,246,0.2);
+    --accent2: #8B5CF6;
+    --success: #10B981;
+    --warn: #F59E0B;
+    --danger: #EF4444;
+    --text: #E2EAF4;
+    --text-muted: #7A9BBD;
+    --text-dim: #4A6A8A;
+    --radius: 14px;
+    --radius-sm: 9px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;overflow:hidden}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column}
+  body::before{
+    content:'';position:fixed;inset:0;
+    background:radial-gradient(ellipse 70% 50% at 15% 15%,rgba(59,130,246,0.07) 0%,transparent 60%),
+               radial-gradient(ellipse 60% 40% at 85% 85%,rgba(239,68,68,0.06) 0%,transparent 60%);
+    pointer-events:none;z-index:0;
+  }
+
+  header{
+    position:relative;z-index:10;
+    display:flex;align-items:center;gap:12px;padding:14px 24px;
+    background:rgba(13,27,42,0.85);backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+  }
+  .logo{
+    width:34px;height:34px;border-radius:9px;
+    background:linear-gradient(135deg,#F59E0B,#EF4444);
+    display:flex;align-items:center;justify-content:center;font-size:16px;
+    box-shadow:0 0 16px rgba(245,158,11,0.3);
+  }
+  header h1{font-size:16px;font-weight:600}
+  header p{font-size:12px;color:var(--text-muted)}
+  .badge{
+    margin-left:auto;font-size:12px;padding:5px 12px;border-radius:99px;font-weight:500;
+    background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);color:#F59E0B;
+  }
+
+  main{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;max-width:800px;width:100%;margin:0 auto;padding:0 16px;overflow:hidden}
+
+  #messages{flex:1;overflow-y:auto;padding:20px 0;display:flex;flex-direction:column;gap:16px;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+  #messages::-webkit-scrollbar{width:4px}
+  #messages::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+  .message{display:flex;gap:11px;animation:fadeUp 0.25s ease}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .message.user{flex-direction:row-reverse}
+  .avatar{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+  .message.user .avatar{background:linear-gradient(135deg,#374151,#1F2937)}
+  .bubble{max-width:74%;padding:12px 16px;border-radius:var(--radius);line-height:1.65;font-size:14px}
+  .message.user .bubble{background:#1E3553;border:1px solid #274261;border-top-right-radius:4px}
+  .message.ai .bubble{background:#111D2C;border:1px solid var(--border);border-top-left-radius:4px}
+
+  /* ── APPROVAL CARD ────────────────────────────────────────── */
+  .approval-card{
+    border:1px solid rgba(245,158,11,0.4);
+    border-radius:var(--radius);
+    background:rgba(245,158,11,0.06);
+    padding:18px 20px;
+    animation:fadeUp 0.3s ease;
+    position:relative;overflow:hidden;
+  }
+  .approval-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,#F59E0B,#EF4444);
+  }
+  .approval-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .approval-icon{
+    width:32px;height:32px;border-radius:8px;
+    background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.4);
+    display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;
+  }
+  .approval-title{font-size:14px;font-weight:600;color:#FCD34D}
+  .approval-subtitle{font-size:12px;color:var(--text-muted);margin-top:2px}
+  .approval-warning{
+    display:flex;align-items:center;gap:8px;
+    background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);
+    border-radius:var(--radius-sm);padding:10px 12px;margin-bottom:14px;
+    font-size:13px;color:#FCD34D;
+  }
+
+  /* Tool payload viewer */
+  .tool-payload{
+    background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:var(--radius-sm);
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;padding:12px 14px;margin-bottom:16px;
+    color:#A5C8E6;line-height:1.5;
+  }
+  .tool-payload .key{color:#7AB8E8}
+  .tool-payload .val{color:#A5D6A7}
+  .tool-payload .str{color:#F48FB1}
+
+  /* Edit area */
+  .edit-section{margin-bottom:14px}
+  .edit-label{font-size:12px;color:var(--text-muted);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+  .edit-label span{color:#F59E0B}
+  #edit-input{
+    width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:var(--radius-sm);
+    color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;padding:10px 12px;
+    outline:none;resize:vertical;min-height:70px;transition:border-color 0.2s;
+  }
+  #edit-input:focus{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-glow)}
+
+  /* Action buttons */
+  .approval-actions{display:flex;gap:10px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:6px;padding:9px 18px;
+    border-radius:var(--radius-sm);border:none;cursor:pointer;font-size:13px;
+    font-weight:500;font-family:'Inter',sans-serif;transition:all 0.2s;
+  }
+  .btn-approve{background:linear-gradient(135deg,#059669,#10B981);color:white;box-shadow:0 0 14px rgba(16,185,129,0.25)}
+  .btn-approve:hover{transform:translateY(-1px);box-shadow:0 0 20px rgba(16,185,129,0.35)}
+  .btn-edit{background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);color:#7FB3FF}
+  .btn-edit:hover{background:rgba(59,130,246,0.25)}
+  .btn-reject{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:#FCA5A5}
+  .btn-reject:hover{background:rgba(239,68,68,0.2)}
+
+  /* Resolved states */
+  .approval-card.approved{border-color:rgba(16,185,129,0.4);background:rgba(16,185,129,0.05)}
+  .approval-card.approved::before{background:var(--success)}
+  .approval-card.rejected{border-color:rgba(239,68,68,0.3);background:rgba(239,68,68,0.04)}
+  .approval-card.rejected::before{background:var(--danger)}
+  .decision-badge{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:13px;font-weight:500;padding:6px 12px;border-radius:99px;
+  }
+  .decision-approved{background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);color:#34D399}
+  .decision-rejected{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:#FCA5A5}
+
+  /* Timeline */
+  #timeline{
+    display:flex;align-items:center;gap:6px;padding:8px 0;margin-bottom:4px;
+    overflow-x:auto;scrollbar-width:none;
+  }
+  #timeline::-webkit-scrollbar{display:none}
+  .step{
+    display:flex;flex-direction:column;align-items:center;gap:4px;
+    min-width:80px;position:relative;
+  }
+  .step:not(:last-child)::after{
+    content:'';position:absolute;right:-6px;top:14px;
+    width:12px;height:1px;background:var(--border);
+  }
+  .step-dot{
+    width:28px;height:28px;border-radius:50%;border:2px solid var(--border);
+    background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:12px;
+    transition:all 0.3s;
+  }
+  .step.active .step-dot{border-color:var(--warn);background:rgba(245,158,11,0.15);box-shadow:0 0 12px rgba(245,158,11,0.3)}
+  .step.done   .step-dot{border-color:var(--success);background:rgba(16,185,129,0.15)}
+  .step-label{font-size:11px;color:var(--text-dim);text-align:center}
+
+  /* Input */
+  #input-area{padding:14px 0 18px;background:linear-gradient(to top,var(--bg) 80%,transparent)}
+  .input-row{display:flex;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:10px 12px;transition:border-color 0.2s,box-shadow 0.2s}
+  .input-row:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+  #user-input{flex:1;background:none;border:none;outline:none;color:var(--text);font-family:'Inter',sans-serif;font-size:14px;resize:none;max-height:100px;line-height:1.6}
+  #user-input::placeholder{color:var(--text-dim)}
+  #send-btn{width:36px;height:36px;border-radius:9px;border:none;cursor:pointer;background:linear-gradient(135deg,#F59E0B,#EF4444);color:white;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0}
+  #send-btn:hover:not(:disabled){transform:scale(1.05)}
+  #send-btn:disabled{opacity:0.4;cursor:not-allowed}
+  #send-btn svg{width:17px;height:17px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">⚠️</div>
+  <div>
+    <h1>Human-in-the-Loop Agent</h1>
+    <p>Pattern 03 — Agent pauses for human approval before tool execution</p>
+  </div>
+  <div class="badge">🔒 Approval Required</div>
+</header>
+
+<main>
+  <!-- Workflow Timeline -->
+  <div id="timeline">
+    <div class="step active" id="step-user">
+      <div class="step-dot">💬</div>
+      <div class="step-label">User sends message</div>
+    </div>
+    <div class="step" id="step-think">
+      <div class="step-dot">🧠</div>
+      <div class="step-label">Agent plans</div>
+    </div>
+    <div class="step" id="step-approve">
+      <div class="step-dot">🛡️</div>
+      <div class="step-label">Human approves</div>
+    </div>
+    <div class="step" id="step-execute">
+      <div class="step-dot">⚙️</div>
+      <div class="step-label">Tool executes</div>
+    </div>
+    <div class="step" id="step-answer">
+      <div class="step-dot">✅</div>
+      <div class="step-label">Agent responds</div>
+    </div>
+  </div>
+
+  <div id="messages"></div>
+
+  <div id="input-area">
+    <div class="input-row">
+      <textarea id="user-input" placeholder="Try: 'Search for latest AI news' or 'Calculate my monthly budget'" rows="1"></textarea>
+      <button id="send-btn" onclick="sendMessage()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</main>
+
+<script>
+let isStreaming = false;
+
+// Auto-resize textarea
+const textarea = document.getElementById('user-input');
+textarea.addEventListener('input', () => {
+  textarea.style.height = 'auto';
+  textarea.style.height = Math.min(textarea.scrollHeight, 100) + 'px';
+});
+textarea.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+});
+
+function setStep(id) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById(id);
+  if (el) el.classList.add('active');
+}
+
+function doneStep(id) {
+  document.getElementById(id)?.classList.add('done');
+}
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+function escapeHtml(s) {
+  if (typeof s !== 'string') s = JSON.stringify(s);
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function appendMessage(role, html) {
+  const msgs = document.getElementById('messages');
+  const div  = document.createElement('div');
+  div.className = `message ${role}`;
+  div.innerHTML = `
+    <div class="avatar">${role === 'user' ? '👤' : '🤖'}</div>
+    <div class="bubble">${html}</div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div.querySelector('.bubble');
+}
+
+function formatPayload(obj) {
+  return Object.entries(obj).map(([k, v]) => {
+    const val = typeof v === 'string'
+      ? `<span class="str">"${escapeHtml(v)}"</span>`
+      : `<span class="val">${escapeHtml(String(v))}</span>`;
+    return `  <span class="key">${escapeHtml(k)}</span>: ${val}`;
+  }).join('\n');
+}
+
+// ── Simulate HITL interaction ─────────────────────────────────────
+async function sendMessage() {
+  const msg = textarea.value.trim();
+  if (!msg || isStreaming) return;
+  isStreaming = true;
+
+  document.getElementById('send-btn').disabled = true;
+  textarea.value = '';
+
+  // 1. User message
+  appendMessage('user', escapeHtml(msg));
+  doneStep('step-user');
+  setStep('step-think');
+
+  // 2. Agent thinking
+  await sleep(800);
+  const thinkBubble = appendMessage('ai', '<em style="color:var(--text-muted)">Analyzing your request...</em>');
+  await sleep(1000);
+
+  // 3. Determine tool to call
+  let toolName, toolArgs, toolRisk;
+  const lower = msg.toLowerCase();
+  if (lower.includes('search') || lower.includes('news') || lower.includes('latest')) {
+    toolName = 'search_web';
+    toolArgs = { query: msg.replace(/^(search|find|look up)\s+/i, '') };
+    toolRisk = 'This action will make a real web search request to an external service.';
+  } else if (lower.match(/\d/) || lower.includes('calc') || lower.includes('budget')) {
+    toolName = 'calculate';
+    toolArgs = { expression: '1200 * 12 + 500' };
+    toolRisk = 'This will evaluate a mathematical expression. Low risk.';
+  } else {
+    toolName = 'search_web';
+    toolArgs = { query: msg };
+    toolRisk = 'This action will make an external API call.';
+  }
+
+  thinkBubble.innerHTML = `I need to call <code style="background:rgba(255,255,255,0.08);padding:2px 6px;border-radius:4px;font-family:JetBrains Mono,monospace;font-size:12px">${escapeHtml(toolName)}()</code> to answer your question. Please review and approve this action.`;
+
+  doneStep('step-think');
+  setStep('step-approve');
+
+  await sleep(500);
+
+  // 4. Approval card
+  const msgs = document.getElementById('messages');
+  const card = document.createElement('div');
+  card.className = 'approval-card';
+  card.id = 'approval-card';
+  card.innerHTML = `
+    <div class="approval-header">
+      <div class="approval-icon">🛡️</div>
+      <div>
+        <div class="approval-title">Tool call requires approval</div>
+        <div class="approval-subtitle">The agent wants to execute: <strong>${escapeHtml(toolName)}</strong></div>
+      </div>
+    </div>
+
+    <div class="approval-warning">⚠️ ${escapeHtml(toolRisk)}</div>
+
+    <div style="font-size:12px;color:var(--text-muted);margin-bottom:8px;font-weight:500">Proposed arguments:</div>
+    <div class="tool-payload">${formatPayload(toolArgs)}</div>
+
+    <div class="edit-section">
+      <div class="edit-label">✏️ Edit arguments before approving: <span>(optional)</span></div>
+      <textarea id="edit-input">${JSON.stringify(toolArgs, null, 2)}</textarea>
+    </div>
+
+    <div class="approval-actions">
+      <button class="btn btn-approve" onclick="resolveApproval('approve')">✅ Approve & Execute</button>
+      <button class="btn btn-edit"    onclick="resolveApproval('edit')">✏️ Approve with Edits</button>
+      <button class="btn btn-reject"  onclick="resolveApproval('reject')">❌ Reject</button>
+    </div>`;
+  msgs.appendChild(card);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  // Wait for resolution
+  await waitForApproval();
+}
+
+let resolveApproval;
+function waitForApproval() {
+  return new Promise(resolve => {
+    resolveApproval = async (decision) => {
+      const card    = document.getElementById('approval-card');
+      const editVal = document.getElementById('edit-input')?.value || '{}';
+
+      let finalArgs;
+      try { finalArgs = JSON.parse(editVal); } catch { finalArgs = {}; }
+
+      // Update card UI
+      card.querySelector('.approval-actions').remove();
+      card.querySelector('.edit-section')?.remove();
+
+      if (decision === 'reject') {
+        card.classList.add('rejected');
+        card.innerHTML += `<div class="decision-badge decision-rejected">❌ Rejected by human</div>`;
+        doneStep('step-approve');
+
+        await sleep(400);
+        appendMessage('ai', 'Understood. I\'ve cancelled the action. Would you like me to try a different approach or answer without using external tools?');
+        doneStep('step-answer');
+      } else {
+        card.classList.add('approved');
+        const editNote = decision === 'edit' ? ' (with your edits)' : '';
+        card.innerHTML += `<div class="decision-badge decision-approved">✅ Approved${editNote}</div>`;
+        doneStep('step-approve');
+        setStep('step-execute');
+
+        // Execute tool
+        await sleep(600);
+        appendMessage('ai', `<span style="color:var(--text-muted);font-size:13px">⚙️ Executing <code style="background:rgba(255,255,255,0.08);padding:1px 5px;border-radius:3px;font-size:12px">${escapeHtml(Object.keys(finalArgs)[0] || 'query')}: "${escapeHtml(Object.values(finalArgs)[0] || '')}"</code>...</span>`);
+        await sleep(1400);
+
+        doneStep('step-execute');
+        setStep('step-answer');
+
+        // Final answer
+        await sleep(500);
+        appendMessage('ai', `Here are the results! The tool executed successfully with your approved parameters.<br><br>
+          <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:8px;padding:12px;font-size:13px;line-height:1.6">
+            📊 <strong>Tool Results:</strong><br>
+            Based on the search, I found relevant information about your query: "${escapeHtml(Object.values(finalArgs)[0] || 'your request')}".<br><br>
+            <em style="color:var(--text-muted)">In a real deployment, this would show actual tool output. The key point is that you approved the action before it executed.</em>
+          </div>`);
+        doneStep('step-answer');
+      }
+
+      document.getElementById('messages').scrollTop = 99999;
+      isStreaming = false;
+      document.getElementById('send-btn').disabled = false;
+      resolve();
+    };
+  });
+}
+</script>
+</body>
+</html>

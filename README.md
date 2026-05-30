@@ -24,7 +24,8 @@ langchain-python/
 ├── 14_human_in_the_loop/  # HITL middleware — approve, edit, reject, respond decisions
 ├── 15_multi_agent/        # Subagents, Handoffs, Skills, Router patterns
 ├── 16_retrieval/          # RAG — knowledge base, 2-step, agentic, hybrid
-└── 17_longterm_memory/    # Store — semantic/episodic/procedural memory across sessions
+├── 17_longterm_memory/    # Store — semantic/episodic/procedural memory across sessions
+└── 18_frontend/           # Generative UI — streaming, tool cards, HITL, time travel
 ```
 
 ---
@@ -196,6 +197,14 @@ langchain-python/
 | `03_write_memory_from_tools.py` | `TypedDict` schemas, `save_user_info`, episodic events, procedural rules, delete |
 | `04_memory_types.py` | Semantic, episodic, procedural memory types, extraction LLM, cross-memory synthesis |
 | `05_full_longterm_memory_showcase.py` | Personal AI — learn in session 1, recall in session 2, multi-user isolation |
+
+### 🌐 18_frontend — Generative UI & Agent Frontends
+| File | Description |
+|------|-------------|
+| `01_agent_server.py` | Python backend — `create_agent` + FastAPI SSE streaming + LangGraph Dev server config |
+| `frontend/01_basic_chat.html` | Token streaming chat with live tool call cards (demo + real server mode) |
+| `frontend/02_hitl_approval.html` | HITL — agent pauses, human approves/rejects/edits before tool execution |
+| `frontend/03_full_chat_app.html` | Full showcase — streaming, tools, HITL, structured output, markdown, time travel |
 
 ---
 
