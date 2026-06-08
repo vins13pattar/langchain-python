@@ -49,3 +49,4 @@ uuid_utils==0.16.0
 websockets==16.0
 xxhash==3.7.0
 zstandard==0.25.0
+graphifyy>=0.8.25
