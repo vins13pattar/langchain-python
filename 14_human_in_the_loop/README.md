@@ -17,6 +17,7 @@
 | [`03_multiple_decisions.py`](03_multiple_decisions.py) | Multiple simultaneous interrupts, mixed decisions, sequential rounds |
 | [`04_hitl_streaming.py`](04_hitl_streaming.py) | `stream()` with `stream_mode=["updates","messages"]`, interrupt detection in stream |
 | [`05_full_hitl_showcase.py`](05_full_hitl_showcase.py) | Secure Financial Operations Agent — risk-tiered policies, all 4 decisions, streaming |
+| [`hitl_overview.py`](hitl_overview.py) | Complete HITL overview in one file |
 
 ---
 

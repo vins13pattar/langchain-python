@@ -17,6 +17,7 @@
 | [`03_runtime_in_middleware.py`](03_runtime_in_middleware.py) | `@dynamic_prompt`, `@before_model` / `@after_model` with `Runtime[Context]`, `execution_info`, `server_info`, role-based access middleware |
 | [`04_execution_and_server_info.py`](04_execution_and_server_info.py) | `execution_info.thread_id/run_id/attempt`, retry detection, audit trail pattern, `server_info` local vs server detection, production auth gate |
 | [`05_full_runtime_showcase.py`](05_full_runtime_showcase.py) | Multi-tenant CRM agent with context injection, RBAC, dynamic prompts, audit logging, store memory, and 4 real-world scenarios |
+| [`runtime_overview.py`](runtime_overview.py) | Complete runtime overview in one file |
 
 ---
 

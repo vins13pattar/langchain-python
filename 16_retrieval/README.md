@@ -14,6 +14,7 @@
 | [`03_agentic_rag.py`](03_agentic_rag.py) | Agentic RAG | Retrieval as tool, fetch_url, llms.txt doc assistant, multi-source, multi-hop |
 | [`04_hybrid_rag.py`](04_hybrid_rag.py) | Hybrid RAG | Query enhancement, HyDE, retrieval validation, answer validation, self-correction |
 | [`05_full_retrieval_showcase.py`](05_full_retrieval_showcase.py) | All | Smart Q&A Assistant — router → direct/2-step/agentic/hybrid |
+| [`retrieval_overview.py`](retrieval_overview.py) | Complete retrieval overview in one file |
 
 ---
 

@@ -20,6 +20,7 @@
 | [`04_tool_return_values.py`](04_tool_return_values.py) | Return `str` / `dict` / `Command`, `wrap_tool_call` error handling |
 | [`05_dynamic_tool_selection.py`](05_dynamic_tool_selection.py) | `wrap_model_call`, role-based filtering, state-based auth gates |
 | [`06_full_tools_showcase.py`](06_full_tools_showcase.py) | All concepts combined — e-commerce assistant |
+| [`tools_overview.py`](tools_overview.py) | Complete tools overview in one file |
 
 ---
 

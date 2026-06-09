@@ -19,6 +19,7 @@
 | [`04_pii_detection_and_guardrails.py`](04_pii_detection_and_guardrails.py) | `PIIDetectionMiddleware`, content guardrail, input validation, output sanitization |
 | [`05_agent_loop_middleware.py`](05_agent_loop_middleware.py) | Loop observer, rate-limiter between iterations, early exit strategy, hook firing order |
 | [`06_full_middleware_showcase.py`](06_full_middleware_showcase.py) | Production-ready customer support triage agent with 6 stacked middleware layers |
+| [`middleware_overview.py`](middleware_overview.py) | Complete middleware overview in one file |
 
 ---
 

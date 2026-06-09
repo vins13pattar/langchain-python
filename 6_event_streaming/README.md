@@ -15,6 +15,7 @@
 | [`03_state_and_values_streaming.py`](03_state_and_values_streaming.py) | `stream.values`, state snapshot diffing, tracking how state variables grow after each agent node |
 | [`04_subagents_and_multiple_projections.py`](04_subagents_and_multiple_projections.py) | Multi-projection streaming, routing subgraph/child agent events (`stream.subgraphs`), advanced orchestrations |
 | [`05_full_streaming_showcase.py`](05_full_streaming_showcase.py) | Full production-ready chatbot using event streaming, managing dynamic content, tool calls, and memory |
+| [`event_streaming_overview.py`](event_streaming_overview.py) | Complete event streaming overview in one file |
 
 ---
 

@@ -44,6 +44,7 @@ Final answer (str or structured object)
 | [`05_middleware.py`](05_middleware.py) | `HumanInTheLoopMiddleware`, `ModelRetryMiddleware`, `PIIMiddleware` |
 | [`06_context_and_runtime.py`](06_context_and_runtime.py) | `context_schema`, `context=`, `get_runtime()`, RBAC in tools |
 | [`07_full_agent_showcase.py`](07_full_agent_showcase.py) | All concepts combined in a production-ready agent |
+| [`agents_overview.py`](agents_overview.py) | Complete agents overview in one file |
 
 ---
 

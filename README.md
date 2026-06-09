@@ -42,6 +42,7 @@ langchain-python/
 | `05_middleware.py` | Middleware and error handling |
 | `06_context_and_runtime.py` | Context injection at runtime |
 | `07_full_agent_showcase.py` | End-to-end agent showcase |
+| `agents_overview.py` | Complete agents overview in one file |
 
 ### 🧠 2_models — LLM Models
 | File | Description |
@@ -51,6 +52,7 @@ langchain-python/
 | `03_structured_output.py` | Model structured outputs via Pydantic/TypedDict |
 | `04_multimodality.py` | Multimodal inputs & image analysis |
 | `05_tool_calling.py` | Tool binding and manual loops |
+| `models_overview.py` | Complete models overview in one file |
 
 ### 💬 3_messages — Messages & History
 | File | Description |
@@ -61,6 +63,7 @@ langchain-python/
 | `04_tool_message_loop.py` | Tool call / ToolMessage cycles |
 | `05_multimodal_messages.py` | Images and multimodal inputs |
 | `06_full_messages_showcase.py` | Full messages showcase |
+| `messages_overview.py` | Complete messages overview in one file |
 
 ### 🔧 4_tools — Tools
 | File | Description |
@@ -71,6 +74,7 @@ langchain-python/
 | `04_tool_return_values.py` | Handling tool return values |
 | `05_dynamic_tool_selection.py` | Dynamic tool selection |
 | `06_full_tools_showcase.py` | Full tools showcase |
+| `tools_overview.py` | Complete tools overview in one file |
 
 ### 🧠 5_short_term_memory — Short-Term Memory
 | File | Description |
@@ -80,6 +84,7 @@ langchain-python/
 | `03_trim_and_delete_messages.py` | Trimming historical messages |
 | `04_summarization_and_dynamic_prompt.py` | Compressing history & dynamic prompts |
 | `05_full_memory_showcase.py` | Full memory personal assistant |
+| `short_term_memory_overview.py` | Complete short-term memory overview in one file |
 
 ### 🌊 6_event_streaming — Event Streaming (v3 Projections)
 | File | Description |
@@ -89,6 +94,7 @@ langchain-python/
 | `03_state_and_values_streaming.py` | Value snapshot tracking |
 | `04_subagents_and_multiple_projections.py` | Child agent event routing |
 | `05_full_streaming_showcase.py` | Production streaming chatbot |
+| `event_streaming_overview.py` | Complete event streaming overview in one file |
 
 ### 📡 7_streaming — Graph Streaming (Step-Level API)
 | File | Description |
@@ -108,6 +114,7 @@ langchain-python/
 | `04_custom_tool_message.py` | Custom tool message representations in chat logs |
 | `05_error_handling_and_retries.py` | Automatic Pydantic retries and custom handlers |
 | `06_full_structured_output_showcase.py` | Support ticket classification and Order lookup showcase |
+| `structured_output_overview.py` | Complete structured output overview in one file |
 
 ### 🛡️ 9_middleware — Middleware
 | File | Description |
@@ -118,6 +125,7 @@ langchain-python/
 | `04_pii_detection_and_guardrails.py` | `PIIDetectionMiddleware`, content guardrails, input validation, output sanitization |
 | `05_agent_loop_middleware.py` | Loop observer, rate limiter, early exit, hook firing order |
 | `06_full_middleware_showcase.py` | Customer support triage agent with 6 stacked middleware layers |
+| `middleware_overview.py` | Complete middleware overview in one file |
 
 ### 🛑 10_guardrails — Guardrails
 | File | Description |
@@ -127,6 +135,7 @@ langchain-python/
 | `03_model_based_guardrails.py` | `after_agent` class & decorator hooks, LLM-as-judge safety, topic relevance, quality gate |
 | `04_hitl_as_guardrail.py` | `HumanInTheLoopMiddleware` for financial/database/email ops, full approve/edit/reject lifecycle |
 | `05_full_guardrails_showcase.py` | Financial advisory agent with 7-layer guardrail stack across 5 real-world scenarios |
+| `guardrails_overview.py` | Complete guardrails overview in one file |
 
 ### ⚡ 11_runtime — Runtime Context
 | File | Description |
@@ -136,6 +145,7 @@ langchain-python/
 | `03_runtime_in_middleware.py` | `@before_model` / `@after_model` with `Runtime[Context]`, `execution_info`, `server_info`, RBAC |
 | `04_execution_and_server_info.py` | `thread_id`, `run_id`, `attempt`, retry detection, audit trail, production auth gate |
 | `05_full_runtime_showcase.py` | Multi-tenant CRM agent with context injection, RBAC, dynamic prompts, store, and audit logging |
+| `runtime_overview.py` | Complete runtime overview in one file |
 
 ### 🧠 12_context_engineering — Context Engineering
 | File | Description |
@@ -147,6 +157,7 @@ langchain-python/
 | `05_tool_context_reads_writes.py` | Tool reads from state/store/context; writes via `Command` and `store.put()` |
 | `06_lifecycle_context.py` | `SummarizationMiddleware`, persistent `before_model` state updates, audit logging |
 | `07_full_context_engineering_showcase.py` | Smart Legal Research Agent — all 3 context types × all 3 data sources × 3 scenarios |
+| `context_engineering_overview.py` | Complete context engineering overview in one file |
 
 ### 🔌 13_mcp — Model Context Protocol
 | File | Description |
@@ -160,6 +171,7 @@ langchain-python/
 | `04_mcp_interceptors.py` | Logging, runtime context, store, state auth, `request.override()`, retry, composition |
 | `05_mcp_callbacks.py` | `on_progress`, `on_logging_message`, `on_elicitation` (accept/decline/cancel) |
 | `06_full_mcp_showcase.py` | Smart Data Assistant — interceptors + callbacks + middleware + multi-turn memory |
+| `mcp_overview.py` | Complete MCP overview in one file |
 
 ### 🧑‍⚖️ 14_human_in_the_loop — Human-in-the-Loop (HITL)
 | File | Description |
@@ -169,6 +181,7 @@ langchain-python/
 | `03_multiple_decisions.py` | Multiple simultaneous interrupts, mixed decisions, sequential rounds |
 | `04_hitl_streaming.py` | `stream()` with `stream_mode=["updates","messages"]`, interrupt detection in stream |
 | `05_full_hitl_showcase.py` | Secure Financial Operations Agent — risk-tiered policies, all 4 decisions, streaming |
+| `hitl_overview.py` | Complete HITL overview in one file |
 
 ### 🤖 15_multi_agent — Multi-Agent Systems
 | File | Description |
@@ -179,6 +192,7 @@ langchain-python/
 | `04_skills.py` | On-demand skill loading, stateful reuse across turns, Store cache |
 | `05_router.py` | LLM structured output routing, keyword routing, fan-out+merge, async parallel, nested |
 | `06_full_multi_agent_showcase.py` | Enterprise Assistant — Router dispatches to Skills / Subagents / Handoffs |
+| `multi_agent_overview.py` | Complete multi-agent overview in one file |
 
 ### 🔍 16_retrieval — Retrieval-Augmented Generation (RAG)
 | File | Description |
@@ -188,6 +202,7 @@ langchain-python/
 | `03_agentic_rag.py` | Agentic RAG — agent with retrieval tools, fetch_url, multi-source |
 | `04_hybrid_rag.py` | Hybrid RAG — query enhancement, retrieval validation, answer quality check |
 | `05_full_retrieval_showcase.py` | Smart Q&A Assistant — all three RAG architectures with routing |
+| `retrieval_overview.py` | Complete retrieval overview in one file |
 
 ### 🧠 17_longterm_memory — Long-Term Memory
 | File | Description |
@@ -197,6 +212,7 @@ langchain-python/
 | `03_write_memory_from_tools.py` | `TypedDict` schemas, `save_user_info`, episodic events, procedural rules, delete |
 | `04_memory_types.py` | Semantic, episodic, procedural memory types, extraction LLM, cross-memory synthesis |
 | `05_full_longterm_memory_showcase.py` | Personal AI — learn in session 1, recall in session 2, multi-user isolation |
+| `longterm_memory_overview.py` | Complete longterm memory overview in one file |
 
 ### 🌐 18_frontend — Generative UI & Agent Frontends
 | File | Description |
@@ -205,6 +221,7 @@ langchain-python/
 | `frontend/01_basic_chat.html` | Token streaming chat with live tool call cards (demo + real server mode) |
 | `frontend/02_hitl_approval.html` | HITL — agent pauses, human approves/rejects/edits before tool execution |
 | `frontend/03_full_chat_app.html` | Full showcase — streaming, tools, HITL, structured output, markdown, time travel |
+| `frontend_overview.py` | Complete frontend overview in one file |
 
 ---
 

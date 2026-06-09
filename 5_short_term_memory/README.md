@@ -16,6 +16,7 @@
 | [`03_trim_and_delete_messages.py`](03_trim_and_delete_messages.py) | `@before_model`, `@after_model`, `RemoveMessage`, `REMOVE_ALL_MESSAGES`, safe trimming |
 | [`04_summarization_and_dynamic_prompt.py`](04_summarization_and_dynamic_prompt.py) | `SummarizationMiddleware`, `@dynamic_prompt`, context/state-aware prompts |
 | [`05_full_memory_showcase.py`](05_full_memory_showcase.py) | All concepts combined — personal productivity assistant |
+| [`short_term_memory_overview.py`](short_term_memory_overview.py) | Complete short-term memory overview in one file |
 
 ---
 

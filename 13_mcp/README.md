@@ -22,6 +22,7 @@
 | [`04_mcp_interceptors.py`](04_mcp_interceptors.py) | Logging, runtime context, store, state auth, `request.override()`, retry, composition |
 | [`05_mcp_callbacks.py`](05_mcp_callbacks.py) | `on_progress`, `on_logging_message`, `on_elicitation` (accept/decline/cancel) |
 | [`06_full_mcp_showcase.py`](06_full_mcp_showcase.py) | Smart Data Assistant — interceptors + callbacks + middleware + multi-turn memory |
+| [`mcp_overview.py`](mcp_overview.py) | Complete MCP overview in one file |
 
 ---
 

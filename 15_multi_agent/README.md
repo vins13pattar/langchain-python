@@ -18,6 +18,7 @@
 | [`04_skills.py`](04_skills.py) | Skills | On-demand skill loading, stateful reuse, Store cache, dynamic `load_skill` |
 | [`05_router.py`](05_router.py) | Router | LLM structured output, keyword routing, fan-out+merge, async parallel, nested |
 | [`06_full_multi_agent_showcase.py`](06_full_multi_agent_showcase.py) | All | Enterprise Assistant: Router → Skills / Subagents / Handoffs |
+| [`multi_agent_overview.py`](multi_agent_overview.py) | Complete multi-agent overview in one file |
 
 ---
 

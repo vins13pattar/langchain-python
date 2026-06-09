@@ -15,6 +15,7 @@
 | [`03_write_memory_from_tools.py`](03_write_memory_from_tools.py) | `TypedDict` schemas, `save_user_info`, episodic events, procedural rules, delete |
 | [`04_memory_types.py`](04_memory_types.py) | Semantic, episodic, procedural memory, extraction LLM, cross-memory synthesis |
 | [`05_full_longterm_memory_showcase.py`](05_full_longterm_memory_showcase.py) | Personal AI — learn from session 1, recall in session 2, multi-user isolation |
+| [`longterm_memory_overview.py`](longterm_memory_overview.py) | Complete longterm memory overview in one file |
 
 ---
 

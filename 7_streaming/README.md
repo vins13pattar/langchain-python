@@ -15,6 +15,7 @@
 | [`03_messages_mode.py`](03_messages_mode.py) | `stream_mode="messages"`, token-by-token text deltas, type-checking `AIMessageChunk`, chunk addition/accumulation |
 | [`04_debug_mode.py`](04_debug_mode.py) | `stream_mode="debug"`, complete verbose tracing, node execution inputs/outputs, thread state checkpointing |
 | [`05_full_streaming_showcase.py`](05_full_streaming_showcase.py) | An interactive, production-ready console assistant featuring thread memory checkpointers and live token streaming |
+| [`streaming_overview.py`](streaming_overview.py) | Complete streaming overview in one file |
 
 ---
 

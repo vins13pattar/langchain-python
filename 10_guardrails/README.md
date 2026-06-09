@@ -24,6 +24,7 @@ Common use cases:
 | [`03_model_based_guardrails.py`](03_model_based_guardrails.py) | `AgentMiddleware.after_agent` class syntax, `@after_agent` decorator, LLM-as-judge safety classifier, topic relevance check, output quality gate |
 | [`04_hitl_as_guardrail.py`](04_hitl_as_guardrail.py) | `HumanInTheLoopMiddleware` for financial / database / email operations, full approve / edit / reject lifecycle, HITL + deterministic pre-filter combined |
 | [`05_full_guardrails_showcase.py`](05_full_guardrails_showcase.py) | Financial advisory agent with 7-layer guardrail stack across 5 real-world scenarios |
+| [`guardrails_overview.py`](guardrails_overview.py) | Complete guardrails overview in one file |
 
 ---
 

@@ -27,6 +27,7 @@ create_agent()  ──►  LangGraph Graph  ──►  HTTP Streaming API
 | [`frontend/01_basic_chat.html`](frontend/01_basic_chat.html) | Token streaming chat with real-time tool call cards |
 | [`frontend/02_hitl_approval.html`](frontend/02_hitl_approval.html) | Human-in-the-loop — approve / reject / edit tool calls |
 | [`frontend/03_full_chat_app.html`](frontend/03_full_chat_app.html) | Full showcase — all patterns in one app (sidebar switcher) |
+| [`frontend_overview.py`](frontend_overview.py) | Complete frontend overview in one file |
 
 ---
 

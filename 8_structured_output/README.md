@@ -16,6 +16,7 @@
 | [`04_custom_tool_message.py`](04_custom_tool_message.py) | Customizing conversation history representation using the `tool_message_content` parameter to hide internal JSON blocks |
 | [`05_error_handling_and_retries.py`](05_error_handling_and_retries.py) | Intelligent retry loops, catching `StructuredOutputValidationError` and `MultipleStructuredOutputsError`, custom retry prompts (strings, lists, callable handlers) |
 | [`06_full_structured_output_showcase.py`](06_full_structured_output_showcase.py) | Complete case study: Support ticket classifier using tools and structured extraction simultaneously with robust error limits |
+| [`structured_output_overview.py`](structured_output_overview.py) | Complete structured output overview in one file |
 
 ---
 

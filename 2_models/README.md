@@ -15,6 +15,7 @@
 | [`03_structured_output.py`](03_structured_output.py) | `model.with_structured_output()`, Pydantic schemas (`BaseModel`), lightweight schemas (`TypedDict`) |
 | [`04_multimodality.py`](04_multimodality.py) | Multimodal content blocks, public image URLs, local base64-encoded image payloads |
 | [`05_tool_calling.py`](05_tool_calling.py) | Tool binding (`model.bind_tools()`), manual parsing of `AIMessage.tool_calls`, manually running tools, creating `ToolMessage`s |
+| [`models_overview.py`](models_overview.py) | Complete models overview in one file |
 
 ---
 

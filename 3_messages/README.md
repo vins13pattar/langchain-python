@@ -32,6 +32,7 @@ Every call to a model is a list of messages in → one AIMessage out.
 | [`04_tool_message_loop.py`](04_tool_message_loop.py) | `bind_tools`, `tool_call_id`, parallel calls, `artifact`, forced tool choice |
 | [`05_multimodal_messages.py`](05_multimodal_messages.py) | Image from URL / base64 / local file, content block format reference |
 | [`06_full_messages_showcase.py`](06_full_messages_showcase.py) | All concepts combined — conversation, tools, streaming, few-shot, multimodal |
+| [`messages_overview.py`](messages_overview.py) | Complete messages overview in one file |
 
 ---
 

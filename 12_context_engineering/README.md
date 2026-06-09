@@ -38,6 +38,7 @@
 | [`05_tool_context_reads_writes.py`](05_tool_context_reads_writes.py) | Tool reads from `runtime.state`, `runtime.store`, `runtime.context`; writes via `Command(update=...)` and `store.put()` |
 | [`06_lifecycle_context.py`](06_lifecycle_context.py) | `SummarizationMiddleware`, persistent state via `before_model`, audit logging to Store, transient vs persistent comparison |
 | [`07_full_context_engineering_showcase.py`](07_full_context_engineering_showcase.py) | Smart Legal Research Agent — all 3 context types × all 3 data sources, 3 real-world scenarios |
+| [`context_engineering_overview.py`](context_engineering_overview.py) | Complete context engineering overview in one file |
 
 ---
 
