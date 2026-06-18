@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-Dimensional Vector Projector</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #050510;
+            font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: white;
+        }
+        #info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            pointer-events: none;
+        }
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: -webkit-linear-gradient(45deg, #00f2fe, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        p {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #8892b0;
+        }
+        
+        /* Glassmorphism Control Panel */
+        #controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(10, 25, 47, 0.7);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 250px;
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .control-group label {
+            font-size: 12px;
+            color: #64ffda;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        select {
+            background: rgba(2, 12, 27, 0.7);
+            color: white;
+            border: 1px solid #233554;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            outline: none;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        
+        select:hover, select:focus {
+            border-color: #64ffda;
+        }
+
+        .label {
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 6px 10px;
+            background: rgba(10, 25, 47, 0.85);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 6px;
+            backdrop-filter: blur(4px);
+            pointer-events: auto;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .label:hover {
+            background: rgba(100, 255, 218, 0.2);
+            border-color: rgba(100, 255, 218, 0.8);
+            transform: scale(1.1);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div id="info">
+        <h1>Vector Projector</h1>
+        <p>Exploring 10 Dimensions</p>
+    </div>
+    
+    <div id="controls">
+        <div class="control-group">
+            <label for="xAxis">X Axis</label>
+            <select id="xAxis"></select>
+        </div>
+        <div class="control-group">
+            <label for="yAxis">Y Axis</label>
+            <select id="yAxis"></select>
+        </div>
+        <div class="control-group">
+            <label for="zAxis">Z Axis</label>
+            <select id="zAxis"></select>
+        </div>
+    </div>
+    
+    <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+
+        const data = [{"label": "Tiger", "components": [51.344398694153746, -19.53334427471067, 34.131793307081495, -4.652145304429621, 60.66905941464806, -0.5794492138638019, 6.560698056249878, -24.27020178974782, 17.40418124415408, -32.50019289508296]}, {"label": "Lion", "components": [59.06392317901642, -43.134835862169105, 40.896111826732536, 1.746243576281882, 51.48676204252756, -17.516534241138693, -31.270529339972235, 10.245297162783283, -1.5741718622970955, 1.953087823499913]}, {"label": "Cheetah", "components": [42.57376537041252, -29.94333108403752, 24.950790837038518, -1.0005946897627966, 30.205234543410647, -7.206138562418671, 5.269221315826217, -20.050368821394045, 17.815468903484085, 59.9400456519063]}, {"label": "Leopard", "components": [51.465636976340946, -52.393418289126046, 24.97061987718756, -28.647016872152836, 50.50193910300334, -16.810063092484164, -18.554302061103773, -1.077936294502803, 21.548584337117706, 13.427009699066705]}, {"label": "Dog", "components": [18.523344995426196, -46.897879514290544, 22.376289544804656, 58.61721211478576, -52.1342344971646, 56.04609830045484, 53.18306648342654, -9.303298972697808, -2.7347602768658112, -0.487065552437753]}, {"label": "Cat", "components": [39.86054868430895, -17.520459815133, 16.988204165839342, 57.72423224356109, 3.2009474974588072, 14.541115558076248, 31.408056432479604, 34.227503304374736, -11.897462065652546, 18.357928857112086]}, {"label": "Wolf", "components": [55.48727913623684, -54.249475855491816, -0.5956867414424846, 41.06991594597719, -20.527101370838455, -1.0426121001487532, -1.5637873864745317, -4.457478516218743, -23.346758158110195, -22.154170332696598]}, {"label": "Fox", "components": [67.23063137599273, -45.74500723697527, -14.106052092453686, 44.427695601920085, -54.18228102577013, -35.35601941548311, -43.58186186199822, -7.656610639005895, -28.620262893448395, 5.904853169493838]}, {"label": "Gen AI Developer", "components": [-94.41855939939562, -50.52929801455362, 32.72435938899746, -7.0810024393511615, -39.75307259624911, 2.641067090779621, -29.931820564161278, 12.589246089524805, 0.2251126816953557, -15.163872963838946]}, {"label": "Data Scientist", "components": [-85.5308767027117, -56.040216198084906, 29.887275230862535, 9.346066879947355, 22.655798513966392, 16.613581216897852, 3.6772952306253983, -0.6984899791562834, -35.208599577680204, 15.034342254994874]}, {"label": "Machine Learning Engineer", "components": [-96.70999809393169, -35.10738983300304, 54.32030993849276, -15.875944583135407, 17.648223911576707, 29.280756616188036, -5.487165195261006, -8.071226390235454, 8.788721191601557, 11.715106503224606]}, {"label": "Software Engineer", "components": [-100.0, -26.105937993178017, 8.221964633499407, -24.17999277797244, -15.50072040950039, 23.47276695554506, 0.43898596847462235, 0.3504273134557902, 20.36726527168772, -2.35654740755932]}, {"label": "Doctor", "components": [-37.264909503862405, 7.648236938803773, -30.425132395943518, 24.551684050520397, 6.148261558184898, -35.28633270649997, 16.373670606139086, 47.306224228929025, 3.4940641786778937, -36.60132257856484]}, {"label": "Nurse", "components": [-49.50644246451149, 33.622097950609465, -21.614782427888457, -8.515841604565006, 23.566149281032114, -48.560327257158946, 16.056698374557307, -6.23757848135283, -60.698315600266625, 13.725440149611885]}, {"label": "Surgeon", "components": [-45.269344997124314, 10.886253830008023, -34.60123580721516, 50.30685932627077, 49.37914501931132, -43.65221020401915, 1.299911628046564, -18.546552169502874, 2.4234615153073835, 2.702843891975536]}, {"label": "Dentist", "components": [-63.35918784872456, 9.485381558180059, -46.73852125890306, 29.173366393472723, 16.270044239515684, -59.91490933545437, 20.795530490832924, -6.578372746006305, 21.591982373640512, 8.11086919374139]}, {"label": "Car", "components": [10.233248478941618, 48.54225658823457, 22.727425146317593, -5.590517725562516, -8.17732962087601, -14.521095415137767, 36.62972459840508, 28.220306371736836, 35.22509265547825, -42.00657763190993]}, {"label": "Truck", "components": [18.317964010193336, 49.020186630462916, 23.340214940165687, -12.420424921910199, 19.03592265902861, 35.099479541666426, 24.29836938461398, -9.548324248117643, -46.96725587760594, -30.414042224766426]}, {"label": "Motorcycle", "components": [10.145216162016679, 42.1016371134811, -9.185584623296972, 22.44638438905767, 15.972844716451917, 26.87537523696769, 39.39217418205113, -23.022974401167385, 44.11585564820203, -2.490824100454115]}, {"label": "Bus", "components": [28.507606566113896, 67.43316369815948, 13.915809499105178, -38.988542865977585, -26.53383389311974, 2.1982181496574933, 52.93197467465922, -2.3528127083970842, -22.753428312559716, 41.11130602678213]}, {"label": "Airplane", "components": [2.5006482523115823, 76.54184109216845, 45.58427850694029, 1.5332124303761043, -46.77250751109569, -19.17964452681031, -38.40013332419793, 7.214872514740072, -3.438825836197671, 16.46706050955409]}, {"label": "Helicopter", "components": [2.048881284836749, 75.37594745006312, 15.36488580110415, 19.20687839604055, -18.719547732223717, -9.69726895878255, -33.54737774462361, -34.6750112454777, 28.85013342691467, -4.314493830924307]}, {"label": "Drone", "components": [-10.90120914828417, 60.31030214480789, 15.56435894295447, 30.173328446472187, -22.473991565544846, 0.19790752795772634, -37.1041896207576, -26.213436157433172, -22.9274713788504, -9.387613329039707]}, {"label": "Jet", "components": [8.034725019838222, 55.534860284883834, 34.20975442377136, 9.427326512302594, -18.77037378046505, -2.0858371473039288, -15.166489567364211, 14.636996247945671, 35.06230138327402, 16.42153286800513]}, {"label": "Apple", "components": [25.774009925366038, -44.324994530941794, -22.252106785831767, -29.885283668030127, -35.50330760787884, -11.053410374666434, -19.1101244661046, 50.927687537192966, 32.63663591599262, -10.969674505857554]}, {"label": "Banana", "components": [16.494577123159278, 16.711500991178426, -7.960295566313926, -90.79882710165941, -13.020379028745591, -8.458872951211001, 2.880812610174038, 22.222910358426795, -9.268422349404194, 33.62913081866526]}, {"label": "Orange", "components": [19.309917496425488, -70.94638485439742, -49.2752305625719, -37.07095107255572, -49.925254784023295, -38.51035036555641, 47.014102493463184, -21.57491392102681, 8.620697300442108, 7.136236314150607]}, {"label": "Grape", "components": [18.556175178290538, -16.792381255894124, -2.4596090650585793, -71.31315110726634, -13.933306683817104, -6.043766748516063, -1.7888342561623662, -63.3362828481419, -8.724762133690419, -59.24376110699322]}, {"label": "Laptop", "components": [14.209682712785943, 14.34328017247547, -8.602154027740236, -16.72399992705121, 28.10642535436967, 23.986780042803623, -8.051274064038545, 67.36269911080058, -21.206151310642333, -18.293477469995562]}, {"label": "Smartphone", "components": [3.3421700489518877, 33.41215452637725, -71.67203602281637, 7.704658077905151, 13.282854929191343, 51.99996626194324, -19.880787349082397, -0.511158512215008, 20.430049366403264, 10.843731067886289]}, {"label": "Tablet", "components": [28.653244551369824, 28.750885933113047, -53.85199757599154, -11.615462314357528, 30.05624315184969, 33.197759963052405, -20.579333592816464, 11.581952405613778, -24.959962457595985, -8.120877136358834]}, {"label": "Smartwatch", "components": [-8.71706706394335, -20.455632291019967, -86.83402105742726, -3.0953654091517313, -2.2586138282142283, 59.32397015466376, -34.192282135905955, -18.703093803726777, 5.727002696794183, 18.02398826680964]}];
+        const numComponents = 10;
+        
+        // Initial axes mapping
+        let axisMap = { x: 0, y: 1, z: 2 };
+
+        // Populate dropdowns
+        const selects = ['xAxis', 'yAxis', 'zAxis'];
+        selects.forEach((id, index) => {
+            const select = document.getElementById(id);
+            for(let i = 0; i < numComponents; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.text = `Principal Component ${i+1}`;
+                if(i === index) option.selected = true;
+                select.appendChild(option);
+            }
+            
+            select.addEventListener('change', (e) => {
+                const axis = id.charAt(0); // 'x', 'y', or 'z'
+                axisMap[axis] = parseInt(e.target.value);
+                updateTargetPositions();
+            });
+        });
+
+        // Scene setup
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x050510, 0.002);
+
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 2000);
+        camera.position.set(200, 150, 250);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.body.appendChild(renderer.domElement);
+
+        const labelRenderer = new CSS2DRenderer();
+        labelRenderer.setSize(window.innerWidth, window.innerHeight);
+        labelRenderer.domElement.style.position = 'absolute';
+        labelRenderer.domElement.style.top = '0px';
+        labelRenderer.domElement.style.pointerEvents = 'none';
+        document.body.appendChild(labelRenderer.domElement);
+
+        const controls = new OrbitControls(camera, labelRenderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.5;
+
+        // Lighting
+        scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+        const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        dirLight.position.set(100, 200, 50);
+        scene.add(dirLight);
+
+        // Grid
+        const gridHelper = new THREE.GridHelper(400, 20, 0x00f2fe, 0x111122);
+        gridHelper.position.y = -150;
+        scene.add(gridHelper);
+
+        // State arrays for animation
+        const nodes = [];
+        const currentPositions = [];
+        const targetPositions = [];
+        const nodeConnections = []; // to store line meshes
+
+        // Node geometries
+        const geometry = new THREE.SphereGeometry(3, 32, 32);
+        const material = new THREE.MeshPhysicalMaterial({
+            color: 0x00f2fe, emissive: 0x00f2fe, emissiveIntensity: 0.5,
+            metalness: 0.2, roughness: 0.1
+        });
+        
+        const lineMaterial = new THREE.LineBasicMaterial({
+            color: 0x4facfe, transparent: true, opacity: 0.2
+        });
+
+        // Create nodes
+        data.forEach((item, i) => {
+            const mesh = new THREE.Mesh(geometry, material);
+            scene.add(mesh);
+            nodes.push(mesh);
+            
+            // Initial positions based on default axes
+            const x = item.components[axisMap.x];
+            const y = item.components[axisMap.y];
+            const z = item.components[axisMap.z];
+            
+            currentPositions.push(new THREE.Vector3(x, y, z));
+            targetPositions.push(new THREE.Vector3(x, y, z));
+            mesh.position.set(x, y, z);
+
+            // Label
+            const div = document.createElement('div');
+            div.className = 'label';
+            div.textContent = item.label;
+            // Hide by default
+            div.style.opacity = '0';
+            div.style.pointerEvents = 'none';
+
+            const label = new CSS2DObject(div);
+            label.position.set(0, 8, 0);
+            mesh.add(label);
+
+            mesh.userData.labelDiv = div;
+        });
+
+        // Set up connection lines (we'll update their geometry in the loop)
+        for(let i=0; i<data.length; i++) {
+            // For each node, we create 2 lines for nearest neighbors
+            const line1 = new THREE.Line(new THREE.BufferGeometry(), lineMaterial);
+            const line2 = new THREE.Line(new THREE.BufferGeometry(), lineMaterial);
+            scene.add(line1); scene.add(line2);
+            nodeConnections.push({ n1: line1, n2: line2 });
+        }
+
+        // Raycaster for click events
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
+
+        window.addEventListener('click', (event) => {
+            // Ignore UI clicks
+            if (event.target.tagName === 'SELECT' || event.target.tagName === 'LABEL') return;
+
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+            raycaster.setFromCamera(mouse, camera);
+            const intersects = raycaster.intersectObjects(nodes);
+
+            if (intersects.length > 0) {
+                const clickedMesh = intersects[0].object;
+                const div = clickedMesh.userData.labelDiv;
+                if (div) {
+                    if (div.style.opacity === '0') {
+                        div.style.opacity = '1';
+                        div.style.pointerEvents = 'auto';
+                    } else {
+                        div.style.opacity = '0';
+                        div.style.pointerEvents = 'none';
+                    }
+                }
+            }
+        });
+
+        function updateTargetPositions() {
+            data.forEach((item, i) => {
+                targetPositions[i].set(
+                    item.components[axisMap.x],
+                    item.components[axisMap.y],
+                    item.components[axisMap.z]
+                );
+            });
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // Smoothly interpolate (lerp) from current to target positions
+            let positionsChanged = false;
+            for(let i=0; i<data.length; i++) {
+                currentPositions[i].lerp(targetPositions[i], 0.05); // 0.05 is the transition speed
+                nodes[i].position.copy(currentPositions[i]);
+                
+                // Add floating effect based on time
+                const time = Date.now() * 0.001;
+                nodes[i].position.y += Math.sin(time * 2 + i) * 0.1;
+            }
+
+            // Update connections based on current visual positions
+            for(let i=0; i<currentPositions.length; i++) {
+                let nearestDist1 = Infinity, nearestDist2 = Infinity;
+                let nearest1 = -1, nearest2 = -1;
+                
+                for(let j=0; j<currentPositions.length; j++) {
+                    if(i === j) continue;
+                    const dist = currentPositions[i].distanceTo(currentPositions[j]);
+                    if(dist < nearestDist1) {
+                        nearestDist2 = nearestDist1;
+                        nearest2 = nearest1;
+                        nearestDist1 = dist;
+                        nearest1 = j;
+                    } else if(dist < nearestDist2) {
+                        nearestDist2 = dist;
+                        nearest2 = j;
+                    }
+                }
+                
+                if(nearest1 !== -1) {
+                    nodeConnections[i].n1.geometry.setFromPoints([currentPositions[i], currentPositions[nearest1]]);
+                }
+                if(nearest2 !== -1) {
+                    nodeConnections[i].n2.geometry.setFromPoints([currentPositions[i], currentPositions[nearest2]]);
+                }
+            }
+
+            controls.update();
+            renderer.render(scene, camera);
+            labelRenderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            labelRenderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        animate();
+    </script>
+</body>
+</html>
