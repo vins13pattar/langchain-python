@@ -62,3 +62,4 @@ logs/
 
 # Graphify cache
 graphify-out/cache/
+chroma_vector_store/

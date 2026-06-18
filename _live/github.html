@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git & GitHub Desktop Guide for Freshers</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+            background: #f5f7fa;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px;
+        }
+
+        header {
+            background: #24292e;
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #24292e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 6px solid #0969da;
+            padding-left: 10px;
+        }
+
+        h3 {
+            margin-top: 20px;
+            color: #0969da;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 8px;
+            overflow: auto;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table th {
+            background: #24292e;
+            color: white;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .success {
+            background: #e7f7ee;
+            border-left: 5px solid #28a745;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
+        .warning {
+            background: #fff8e6;
+            border-left: 5px solid #ff9800;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
+        .flow {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-family: monospace;
+            margin-top: 15px;
+            white-space: pre-line;
+        }
+
+        ul li {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+
+        .toc {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .toc ul {
+            columns: 2;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+        }
+
+        .step {
+            background: #0969da;
+            color: white;
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Git & GitHub Desktop Complete Guide</h1>
+            <p>Beginner Friendly Guide with Authentication, Repositories, Branching, Pull Requests and Daily Workflow
+            </p>
+        </header>
+
+        <div class="toc">
+            <h2>Contents</h2>
+            <ul>
+                <li>Git vs GitHub</li>
+                <li>Install GitHub Desktop</li>
+                <li>Authentication</li>
+                <li>Create Repository</li>
+                <li>Publish Repository</li>
+                <li>Commit Changes</li>
+                <li>Push & Pull</li>
+                <li>Clone Repository</li>
+                <li>Branching</li>
+                <li>Pull Requests</li>
+                <li>Daily Workflow</li>
+                <li>Industry Workflow</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>1. Understanding Git and GitHub</h2>
+
+            <table>
+                <tr>
+                    <th>Tool</th>
+                    <th>Purpose</th>
+                </tr>
+                <tr>
+                    <td>Git</td>
+                    <td>Tracks code changes and maintains version history</td>
+                </tr>
+                <tr>
+                    <td>GitHub</td>
+                    <td>Cloud platform that hosts Git repositories</td>
+                </tr>
+                <tr>
+                    <td>GitHub Desktop</td>
+                    <td>GUI application for working with Git</td>
+                </tr>
+            </table>
+
+            <div class="flow">
+                Your Computer
+                ↓
+                GitHub Desktop
+                ↓
+                Local Repository
+                ↓
+                Push / Pull
+                ↓
+                GitHub Repository
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>2. Install GitHub Desktop</h2>
+
+            <span class="step">STEP 1</span>
+
+            <p>Download GitHub Desktop:</p>
+
+            <pre><code>https://desktop.github.com</code></pre>
+
+            <p>Install and launch the application.</p>
+        </div>
+
+        <div class="card">
+            <h2>3. GitHub Authentication</h2>
+
+            <span class="step">STEP 2</span>
+
+            <ol>
+                <li>Open GitHub Desktop</li>
+                <li>Click Sign in to GitHub.com</li>
+                <li>Browser opens</li>
+                <li>Login to GitHub</li>
+                <li>Authorize GitHub Desktop</li>
+                <li>Return to application</li>
+            </ol>
+
+            <div class="success">
+                GitHub Desktop uses OAuth authentication.
+            </div>
+
+            <h3>How OAuth Works</h3>
+
+            <div class="flow">
+                GitHub Desktop
+                ↓
+                Browser Login
+                ↓
+                GitHub OAuth
+                ↓
+                Access Token
+                ↓
+                Stored Securely
+            </div>
+
+            <h3>Authentication Methods</h3>
+
+            <table>
+                <tr>
+                    <th>Method</th>
+                    <th>Recommended</th>
+                </tr>
+                <tr>
+                    <td>OAuth (GitHub Desktop)</td>
+                    <td>✅ Yes</td>
+                </tr>
+                <tr>
+                    <td>Personal Access Token</td>
+                    <td>✅ Learn Later</td>
+                </tr>
+                <tr>
+                    <td>SSH Keys</td>
+                    <td>✅ Professional Teams</td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>❌ Unsupported</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>4. Create Your First Repository</h2>
+
+            <span class="step">STEP 3</span>
+
+            <ul>
+                <li>File → New Repository</li>
+                <li>Enter repository name</li>
+                <li>Initialize with README</li>
+                <li>Click Create Repository</li>
+            </ul>
+
+            <pre><code>Repository Name:
+learning-git</code></pre>
+        </div>
+
+        <div class="card">
+            <h2>5. Publish Repository to GitHub</h2>
+
+            <span class="step">STEP 4</span>
+
+            <ul>
+                <li>Click Publish Repository</li>
+                <li>Select Public or Private</li>
+                <li>Click Publish</li>
+            </ul>
+
+            <div class="flow">
+                Local Repository
+                ↓
+                Publish Repository
+                ↓
+                GitHub Repository
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>6. Making Changes</h2>
+
+            <span class="step">STEP 5</span>
+
+            <ul>
+                <li>Edit files</li>
+                <li>Save files</li>
+                <li>GitHub Desktop automatically detects changes</li>
+            </ul>
+
+            <pre><code># README.md
+
+# Learning GitHub Desktop</code></pre>
+        </div>
+
+        <div class="card">
+            <h2>7. Commit Changes</h2>
+
+            <span class="step">STEP 6</span>
+
+            <ul>
+                <li>Add summary message</li>
+                <li>Click Commit</li>
+            </ul>
+
+            <pre><code>Added project description</code></pre>
+
+            <div class="success">
+                A Commit is a save point or checkpoint in your project.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>8. Push Changes</h2>
+
+            <span class="step">STEP 7</span>
+
+            <p>After committing:</p>
+
+            <pre><code>Push Origin</code></pre>
+
+            <div class="flow">
+                Local Commit
+                ↓
+                Push Origin
+                ↓
+                GitHub Cloud
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>9. Pull Latest Changes</h2>
+
+            <span class="step">STEP 8</span>
+
+            <p>Download latest changes from GitHub.</p>
+
+            <pre><code>Pull Origin</code></pre>
+
+            <div class="flow">
+                GitHub
+                ↓
+                Pull Origin
+                ↓
+                Your Computer
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>10. Clone Existing Repository</h2>
+
+            <span class="step">STEP 9</span>
+
+            <ul>
+                <li>File → Clone Repository</li>
+                <li>Select Repository</li>
+                <li>Choose Local Folder</li>
+                <li>Clone</li>
+            </ul>
+
+            <div class="flow">
+                GitHub Repository
+                ↓
+                Clone
+                ↓
+                Local Repository
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>11. Working with Branches</h2>
+
+            <span class="step">STEP 10</span>
+
+            <h3>Create Feature Branch</h3>
+
+            <pre><code>feature-login</code></pre>
+
+            <div class="flow">
+                main
+                │
+                └── feature-login
+            </div>
+
+            <div class="warning">
+                Never develop directly on main in professional projects.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>12. Pull Requests</h2>
+
+            <span class="step">STEP 11</span>
+
+            <ol>
+                <li>Create feature branch</li>
+                <li>Make changes</li>
+                <li>Commit</li>
+                <li>Push branch</li>
+                <li>Create Pull Request</li>
+                <li>Code Review</li>
+                <li>Merge</li>
+            </ol>
+
+            <div class="flow">
+                feature-login
+                ↓
+                Push
+                ↓
+                Create Pull Request
+                ↓
+                Review
+                ↓
+                Merge into main
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>13. Common GitHub Desktop Buttons</h2>
+
+            <table>
+                <tr>
+                    <th>Button</th>
+                    <th>Purpose</th>
+                </tr>
+                <tr>
+                    <td>Fetch Origin</td>
+                    <td>Check for updates</td>
+                </tr>
+                <tr>
+                    <td>Pull Origin</td>
+                    <td>Download updates</td>
+                </tr>
+                <tr>
+                    <td>Push Origin</td>
+                    <td>Upload commits</td>
+                </tr>
+                <tr>
+                    <td>Commit</td>
+                    <td>Save locally</td>
+                </tr>
+                <tr>
+                    <td>Clone Repository</td>
+                    <td>Download repository</td>
+                </tr>
+                <tr>
+                    <td>Create Pull Request</td>
+                    <td>Request merge</td>
+                </tr>
+                <tr>
+                    <td>Current Branch</td>
+                    <td>Switch branch</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>14. Daily Developer Workflow</h2>
+
+            <div class="flow">
+                1. Fetch Origin
+                ↓
+                2. Pull Origin
+                ↓
+                3. Create Branch
+                ↓
+                4. Write Code
+                ↓
+                5. Commit
+                ↓
+                6. Push Origin
+                ↓
+                7. Create Pull Request
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>15. Real Industry Workflow</h2>
+
+            <div class="flow">
+                Clone Repository
+                ↓
+                Create Feature Branch
+                ↓
+                Develop Feature
+                ↓
+                Commit Changes
+                ↓
+                Push Branch
+                ↓
+                Create Pull Request
+                ↓
+                Code Review
+                ↓
+                Merge to Main
+                ↓
+                Pull Latest Main
+                ↓
+                Deployment
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>16. Key Concepts Every Fresher Must Know</h2>
+
+            <table>
+                <tr>
+                    <th>Concept</th>
+                    <th>Meaning</th>
+                </tr>
+                <tr>
+                    <td>Repository</td>
+                    <td>Project Folder</td>
+                </tr>
+                <tr>
+                    <td>Commit</td>
+                    <td>Save Point</td>
+                </tr>
+                <tr>
+                    <td>Branch</td>
+                    <td>Separate Line of Development</td>
+                </tr>
+                <tr>
+                    <td>Push</td>
+                    <td>Upload Changes</td>
+                </tr>
+                <tr>
+                    <td>Pull</td>
+                    <td>Download Changes</td>
+                </tr>
+                <tr>
+                    <td>Clone</td>
+                    <td>Copy Repository Locally</td>
+                </tr>
+                <tr>
+                    <td>Pull Request</td>
+                    <td>Request Code Merge</td>
+                </tr>
+                <tr>
+                    <td>Merge</td>
+                    <td>Combine Branches</td>
+                </tr>
+            </table>
+        </div>
+
+        <footer>
+            <h3>GitHub Desktop Guide for Freshers</h3>
+            <p>Learn Repository → Commit → Branch → Push → Pull → Pull Request</p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
