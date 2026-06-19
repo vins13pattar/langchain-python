@@ -1,16 +1,30 @@
+from langchain_pinecone import PineconeVectorStore
+from pinecone import Pinecone
+from langchain_core.documents import Document
+from langchain_openai import OpenAIEmbeddings
 
 from dotenv import load_dotenv
-from langchain_openai import OpenAIEmbeddings
-from langchain_chroma import Chroma
-
-from langchain_core.documents import Document
-
 load_dotenv()
 
-embeddings = OpenAIEmbeddings(
-    model="text-embedding-3-small",
-    dimensions=128
-)
+pc = Pinecone()
+
+index_name = "langchain"  # change if desired
+
+from pinecone import ServerlessSpec
+
+if not pc.has_index(index_name):
+    pc.create_index(
+        name=index_name,
+        dimension=1536,
+        metric="cosine",
+        spec=ServerlessSpec(
+            cloud="aws",
+            region="us-east-1"
+        )
+    )
+
+index = pc.Index(index_name)
+
 
 documents = [
     Document(
@@ -182,95 +196,27 @@ documents = [
     )
 ]
 
-# vector_store = Chroma.from_documents(
-#     documents=documents,
-#     embedding=embeddings,
-#     collection_name="document_collections",
-#     persist_directory="/Users/vinod/Projects/MicroDegree/Langchain/_live/chroma_vector_store",
-# )
+embeddings = OpenAIEmbeddings(
+    model="text-embedding-3-small"
+)
 
-vector_store = Chroma.from_documents(
-    documents=documents,
+pinecone_vector_store = PineconeVectorStore(
     embedding=embeddings,
-    ids=[str(doc.metadata["id"]) for doc in documents],
-    collection_name="document_collections",
-    persist_directory="/Users/vinod/Projects/MicroDegree/Langchain/_live/chroma_vector_store",
-    collection_metadata={"hnsw:space": "l2"}
+    index=index,
 )
 
-print("Vector Store created successfully")
+pinecone_vector_store.add_documents(documents=documents, ids=[str(doc.metadata["id"]) for doc in documents])
 
-# print("Before Deletion\n")
-# similar_docs = vector_store.similarity_search("what is LLM?", k=3, filter={"source": "llm_guide"})
-
-# for i, doc in enumerate(similar_docs):
-#     print(f"Document {i+1}:")
-#     print(f"Content: {doc.page_content}")
-#     print(f"Metadata: {doc.metadata}")
-#     print("=" * 50)
-
-# print("\nDeleting Document with ID 8")
-# vector_store.delete(ids=["8"])
-
-# print("After Deletion\n")
-# similar_docs = vector_store.similarity_search("what is LLM?", k=3, filter={"source": "llm_guide"})
-
-# for i, doc in enumerate(similar_docs):
-#     print(f"Document {i+1}:")
-#     print(f"Content: {doc.page_content}")
-#     print(f"Metadata: {doc.metadata}")
-#     print("=" * 50)
-
-# Returns list of tuples (document, score)
-# similar_docs = vector_store.similarity_search_with_score("what is Artificial Intelligence?", k=3)
-
-# Returns list of tuples (document, similarity score, cosine similarity score)
-# similar_docs = vector_store.search("what is LLM?", search_type="mmr", k=3)
-# for i, (doc, score) in enumerate(similar_docs):
-#     print(f"Document {i+1}:")
-#     print(f"Content: {doc.page_content}")
-#     print(f"Metadata: {doc.metadata}")
-#     print(f"Score: {score}")
-#     print("=" * 50)
-
-# mmr_search - Maximum Marginal Relevance (MMR) search returns documents that are both relevant to the query and diverse from each other.
-# mmr_search_results = vector_store.max_marginal_relevance_search("what is Artificial Intelligence?", k=3, lambda_mult=1)
-
-# for i, doc in enumerate(mmr_search_results):
-#     print(f"Document {i+1}:")
-#     print(f"Content: {doc.page_content}")
-#     print(f"Metadata: {doc.metadata}")
-#     print("=" * 50)
-    
-
-# Retriever
-
-# retriever = vector_store.as_retriever(
-#    search_type="mmr",
-#    search_kwargs={"k": 2, "lambda_mult": 0.25}
-# )
-retriever = vector_store.as_retriever(
-   search_type="similarity",
-   search_kwargs={"k": 2, "filter": {"source": "ml_guide"}}
+searched_docs = pinecone_vector_store.similarity_search(
+    query="What is LangChain?",
+    k=3
 )
 
-print("\nResult 1:")
-retrieved_docs_1 = retriever.invoke("What is Artificial Intelligence")
-
-for i, doc in enumerate(retrieved_docs_1):
-    print(f"Document {i+1}:")
-    print(f"Content: {doc.page_content}")
-    print(f"Metadata: {doc.metadata}")
-    print("=" * 50)
-
-print("\nResult 2:")
-retrieved_docs_2 = retriever.invoke("What is Machine Learning")
-
-for i, doc in enumerate(retrieved_docs_2):
-    print(f"Document {i+1}:")
-    print(f"Content: {doc.page_content}")
-    print(f"Metadata: {doc.metadata}")
-    print("=" * 50)
-
-
-
+for doc in searched_docs:
+    print("="*50)
+    print(doc.page_content)
+    print("="*50)
+    print(doc.metadata)
+    print("="*50)
+    print()
+    print()
