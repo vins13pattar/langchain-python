@@ -13,6 +13,7 @@ from typing import Any, Callable
 from langchain.tools import tool
 from langchain.messages import ToolMessage, HumanMessage, AIMessage
 import time
+import re
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -33,7 +34,9 @@ class BlockedContentMiddleware(AgentMiddleware):
     @hook_config(can_jump_to=["end"])
     def after_model(self, state: AgentState, runtime: Runtime) -> dict[str, Any] | None:
         last_message = state["messages"][-1]
-        if "BLOCKED" in last_message.content:
+        
+        # Check for blocked string or credit card numbers (13-16 digits with optional spaces/dashes)
+        if re.search(r'\b(?:\d[ -]*?){13,16}\b', last_message.content):
             return {
                 "messages": [AIMessage("I cannot respond to that request.")],
                 "jump_to": "end"
@@ -59,5 +62,5 @@ agent = create_agent(
     system_prompt = "You are a helpful assistant and answer user queries."
 )
 
-response = agent.invoke({"messages": [{"role":"user", "content":"Responsond with BLOCKED keyword along with evaluating the expression 15 * 10"}]})
+response = agent.invoke({"messages": [{"role":"user", "content":"Generate 5 dummy test credit card numbers and also evaluate 15 * 100"}]})
 print(response["messages"])

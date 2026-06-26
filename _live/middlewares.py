@@ -58,7 +58,14 @@ def send_email(to_address:str, subject:str, body:str) -> str:
 
 checkpointer = InMemorySaver()
 store = InMemoryStore()
-CHAT_MESSAGES = {"configurable": {"thread_id": "chat_001"}}
+user1 = {
+    "id":"user_001",
+    "name":"vinod",
+    "location":"Hyderabad",
+    "email":"[EMAIL_ADDRESS]",
+}
+
+CHAT_MESSAGES_USER1 = {"configurable": {"thread_id": f"{user1['id']}_chat_001",}}
 
 chat_template = ChatPromptTemplate.from_messages([
    MessagesPlaceholder(variable_name="messages_history"), # Will get replaced by a list of messages
@@ -84,6 +91,9 @@ messages = chat_template.invoke({
     ]
 })
 
+print("\n Messages length before summarization for User 1", len(messages.messages)+1, "\n")
+print("\n Messages for User 1\n", messages.messages)
+
 
 agent = create_agent(
     model="gpt-5.4-mini",
@@ -99,16 +109,15 @@ agent = create_agent(
         )
     ]
 )
-print("\n Length of messages before summarization", len(messages.messages)+1, "\n")
 
-result = agent.invoke(messages, config=CHAT_MESSAGES)
+result1 = agent.invoke(messages, config=CHAT_MESSAGES_USER1)
 
-print("\n Length of messages after summarization", len(result["messages"])+1, "\n")
-
+print("\n Length of messages after summarization for User 1", len(result1["messages"])+1, "\n")
 
 
-print("\nFinal messages post summarization\n")
-for msg in result["messages"]:
+
+print("\nFinal messages post summarization for User 1\n")
+for msg in result1["messages"]:
     print("--------------------------------------\n")
     print(f"Message type: {msg.type}\n")
     print(f"Message content: {msg.content}\n")
