@@ -31,96 +31,6 @@
       "norm_label": "dice_roll()"
     },
     {
-      "label": "app.py",
-      "file_type": "code",
-      "source_file": "app.py",
-      "source_location": "L1",
-      "id": "app_py",
-      "community": 228,
-      "norm_label": "app.py"
-    },
-    {
-      "label": "calculator()",
-      "file_type": "code",
-      "source_file": "app.py",
-      "source_location": "L1",
-      "id": "langchain_app_calculator",
-      "community": 228,
-      "norm_label": "calculator()"
-    },
-    {
-      "label": "Performs basic arithmetic operations.",
-      "file_type": "rationale",
-      "source_file": "app.py",
-      "source_location": "L2",
-      "id": "langchain_app_rationale_2",
-      "community": 228,
-      "norm_label": "performs basic arithmetic operations."
-    },
-    {
-      "label": "test_app.py",
-      "file_type": "code",
-      "source_file": "test_app.py",
-      "source_location": "L1",
-      "id": "test_app_py",
-      "community": 228,
-      "norm_label": "test_app.py"
-    },
-    {
-      "label": "test_calculator_add()",
-      "file_type": "code",
-      "source_file": "test_app.py",
-      "source_location": "L6",
-      "id": "langchain_test_app_test_calculator_add",
-      "community": 228,
-      "norm_label": "test_calculator_add()"
-    },
-    {
-      "label": "test_calculator_subtract()",
-      "file_type": "code",
-      "source_file": "test_app.py",
-      "source_location": "L10",
-      "id": "langchain_test_app_test_calculator_subtract",
-      "community": 228,
-      "norm_label": "test_calculator_subtract()"
-    },
-    {
-      "label": "test_calculator_multiply()",
-      "file_type": "code",
-      "source_file": "test_app.py",
-      "source_location": "L14",
-      "id": "langchain_test_app_test_calculator_multiply",
-      "community": 228,
-      "norm_label": "test_calculator_multiply()"
-    },
-    {
-      "label": "test_calculator_divide()",
-      "file_type": "code",
-      "source_file": "test_app.py",
-      "source_location": "L18",
-      "id": "langchain_test_app_test_calculator_divide",
-      "community": 228,
-      "norm_label": "test_calculator_divide()"
-    },
-    {
-      "label": "test_calculator_divide_by_zero()",
-      "file_type": "code",
-      "source_file": "test_app.py",
-      "source_location": "L22",
-      "id": "langchain_test_app_test_calculator_divide_by_zero",
-      "community": 228,
-      "norm_label": "test_calculator_divide_by_zero()"
-    },
-    {
-      "label": "test_calculator_unsupported_operation()",
-      "file_type": "code",
-      "source_file": "test_app.py",
-      "source_location": "L27",
-      "id": "langchain_test_app_test_calculator_unsupported_operation",
-      "community": 228,
-      "norm_label": "test_calculator_unsupported_operation()"
-    },
-    {
       "label": "02_tool_runtime.py",
       "file_type": "code",
       "source_file": "11_runtime/02_tool_runtime.py",
@@ -1467,7 +1377,7 @@
       "source_file": "18_frontend/01_agent_server.py",
       "source_location": "L92",
       "id": "18_frontend_01_agent_server_rationale_92",
-      "community": 5,
+      "community": 19,
       "norm_label": "evaluate a mathematical expression safely."
     },
     {
@@ -1917,7 +1827,7 @@
       "source_file": "",
       "source_location": "",
       "id": "basemodel",
-      "community": 183,
+      "community": 21,
       "norm_label": "basemodel"
     },
     {
@@ -2754,7 +2664,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L32",
       "id": "4_tools_tools_overview_add_numbers",
-      "community": 230,
+      "community": 23,
       "norm_label": "add_numbers()"
     },
     {
@@ -2763,7 +2673,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L41",
       "id": "4_tools_tools_overview_get_current_time",
-      "community": 234,
+      "community": 23,
       "norm_label": "get_current_time()"
     },
     {
@@ -2772,7 +2682,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L50",
       "id": "4_tools_tools_overview_search",
-      "community": 248,
+      "community": 23,
       "norm_label": "search()"
     },
     {
@@ -2781,7 +2691,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L75",
       "id": "4_tools_tools_overview_weatherinput",
-      "community": 23,
+      "community": 21,
       "norm_label": "weatherinput"
     },
     {
@@ -2799,7 +2709,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L87",
       "id": "4_tools_tools_overview_get_weather",
-      "community": 239,
+      "community": 23,
       "norm_label": "get_weather()"
     },
     {
@@ -2808,7 +2718,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L102",
       "id": "4_tools_tools_overview_address",
-      "community": 23,
+      "community": 21,
       "norm_label": "address"
     },
     {
@@ -2817,7 +2727,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L107",
       "id": "4_tools_tools_overview_shipmentinput",
-      "community": 23,
+      "community": 21,
       "norm_label": "shipmentinput"
     },
     {
@@ -2826,7 +2736,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L114",
       "id": "4_tools_tools_overview_create_shipment",
-      "community": 232,
+      "community": 23,
       "norm_label": "create_shipment()"
     },
     {
@@ -2844,7 +2754,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L132",
       "id": "4_tools_tools_overview_search_products",
-      "community": 241,
+      "community": 23,
       "norm_label": "search_products()"
     },
     {
@@ -2862,7 +2772,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L159",
       "id": "4_tools_tools_overview_get_message_count",
-      "community": 235,
+      "community": 23,
       "norm_label": "get_message_count()"
     },
     {
@@ -2871,7 +2781,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L164",
       "id": "4_tools_tools_overview_get_my_account",
-      "community": 236,
+      "community": 23,
       "norm_label": "get_my_account()"
     },
     {
@@ -2880,7 +2790,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L170",
       "id": "4_tools_tools_overview_perform_admin_task",
-      "community": 240,
+      "community": 23,
       "norm_label": "perform_admin_task()"
     },
     {
@@ -2898,7 +2808,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L202",
       "id": "4_tools_tools_overview_save_preference",
-      "community": 242,
+      "community": 23,
       "norm_label": "save_preference()"
     },
     {
@@ -2907,7 +2817,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L214",
       "id": "4_tools_tools_overview_get_preferences",
-      "community": 237,
+      "community": 23,
       "norm_label": "get_preferences()"
     },
     {
@@ -2916,7 +2826,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L250",
       "id": "4_tools_tools_overview_weather_text",
-      "community": 243,
+      "community": 23,
       "norm_label": "weather_text()"
     },
     {
@@ -2925,7 +2835,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L256",
       "id": "4_tools_tools_overview_weather_dict",
-      "community": 244,
+      "community": 23,
       "norm_label": "weather_dict()"
     },
     {
@@ -2943,7 +2853,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L269",
       "id": "4_tools_tools_overview_set_language",
-      "community": 245,
+      "community": 23,
       "norm_label": "set_language()"
     },
     {
@@ -2952,7 +2862,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L277",
       "id": "4_tools_tools_overview_get_settings",
-      "community": 238,
+      "community": 23,
       "norm_label": "get_settings()"
     },
     {
@@ -2961,7 +2871,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L296",
       "id": "4_tools_tools_overview_risky_divide",
-      "community": 246,
+      "community": 23,
       "norm_label": "risky_divide()"
     },
     {
@@ -2979,7 +2889,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L326",
       "id": "4_tools_tools_overview_read_public_docs",
-      "community": 247,
+      "community": 23,
       "norm_label": "read_public_docs()"
     },
     {
@@ -2988,7 +2898,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L331",
       "id": "4_tools_tools_overview_create_document",
-      "community": 231,
+      "community": 23,
       "norm_label": "create_document()"
     },
     {
@@ -2997,7 +2907,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L336",
       "id": "4_tools_tools_overview_delete_document",
-      "community": 233,
+      "community": 23,
       "norm_label": "delete_document()"
     },
     {
@@ -3042,7 +2952,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L33",
       "id": "4_tools_tools_overview_rationale_33",
-      "community": 230,
+      "community": 23,
       "norm_label": "add two numbers and return the result.     args:         a: first number"
     },
     {
@@ -3051,7 +2961,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L42",
       "id": "4_tools_tools_overview_rationale_42",
-      "community": 234,
+      "community": 23,
       "norm_label": "get the current date and time.     args:         timezone: timezone name (e.g. u"
     },
     {
@@ -3060,7 +2970,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L51",
       "id": "4_tools_tools_overview_rationale_51",
-      "community": 248,
+      "community": 23,
       "norm_label": "search the web for current information about any topic.     args:         query:"
     },
     {
@@ -3069,7 +2979,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L88",
       "id": "4_tools_tools_overview_rationale_88",
-      "community": 239,
+      "community": 23,
       "norm_label": "get weather for a city. pydantic schema with validation."
     },
     {
@@ -3078,7 +2988,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L115",
       "id": "4_tools_tools_overview_rationale_115",
-      "community": 232,
+      "community": 23,
       "norm_label": "create a shipping request between two addresses."
     },
     {
@@ -3087,7 +2997,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L133",
       "id": "4_tools_tools_overview_rationale_133",
-      "community": 241,
+      "community": 23,
       "norm_label": "search product catalogue. supports category and price filters."
     },
     {
@@ -3096,7 +3006,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L160",
       "id": "4_tools_tools_overview_rationale_160",
-      "community": 235,
+      "community": 23,
       "norm_label": "return number of messages in the current conversation."
     },
     {
@@ -3105,7 +3015,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L165",
       "id": "4_tools_tools_overview_rationale_165",
-      "community": 236,
+      "community": 23,
       "norm_label": "get current user's account details."
     },
     {
@@ -3114,7 +3024,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L171",
       "id": "4_tools_tools_overview_rationale_171",
-      "community": 240,
+      "community": 23,
       "norm_label": "perform admin task (admin role required).     args:         task: task to perfor"
     },
     {
@@ -3123,7 +3033,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L203",
       "id": "4_tools_tools_overview_rationale_203",
-      "community": 242,
+      "community": 23,
       "norm_label": "save a user preference to persistent storage.     args:         key: preference"
     },
     {
@@ -3132,7 +3042,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L215",
       "id": "4_tools_tools_overview_rationale_215",
-      "community": 237,
+      "community": 23,
       "norm_label": "get all saved preferences for the current user."
     },
     {
@@ -3141,7 +3051,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L251",
       "id": "4_tools_tools_overview_rationale_251",
-      "community": 243,
+      "community": 23,
       "norm_label": "get weather as plain text. args: city: city name."
     },
     {
@@ -3150,7 +3060,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L257",
       "id": "4_tools_tools_overview_rationale_257",
-      "community": 244,
+      "community": 23,
       "norm_label": "get structured weather data. args: city: city name."
     },
     {
@@ -3159,7 +3069,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L270",
       "id": "4_tools_tools_overview_rationale_270",
-      "community": 245,
+      "community": 23,
       "norm_label": "set preferred response language. args: language: e.g. english, hindi."
     },
     {
@@ -3168,7 +3078,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L278",
       "id": "4_tools_tools_overview_rationale_278",
-      "community": 238,
+      "community": 23,
       "norm_label": "get current settings."
     },
     {
@@ -3177,7 +3087,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L297",
       "id": "4_tools_tools_overview_rationale_297",
-      "community": 246,
+      "community": 23,
       "norm_label": "divide two numbers. args: numerator, denominator (cannot be zero)."
     },
     {
@@ -3186,7 +3096,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L327",
       "id": "4_tools_tools_overview_rationale_327",
-      "community": 247,
+      "community": 23,
       "norm_label": "read public documentation. args: topic: topic to look up."
     },
     {
@@ -3195,7 +3105,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L332",
       "id": "4_tools_tools_overview_rationale_332",
-      "community": 231,
+      "community": 23,
       "norm_label": "create a document. args: title, content."
     },
     {
@@ -3204,7 +3114,7 @@
       "source_file": "4_tools/tools_overview.py",
       "source_location": "L337",
       "id": "4_tools_tools_overview_rationale_337",
-      "community": 233,
+      "community": 23,
       "norm_label": "delete a document (admin only). args: doc_id: document id."
     },
     {
@@ -7834,150 +7744,6 @@
       "norm_label": "run the agent and print each step as it arrives."
     },
     {
-      "label": "test_selection.py",
-      "file_type": "code",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L1",
-      "id": "scratch_test_selection_py",
-      "community": 58,
-      "norm_label": "test_selection.py"
-    },
-    {
-      "label": "tool1()",
-      "file_type": "code",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L12",
-      "id": "scratch_test_selection_tool1",
-      "community": 58,
-      "norm_label": "tool1()"
-    },
-    {
-      "label": "tool2()",
-      "file_type": "code",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L16",
-      "id": "scratch_test_selection_tool2",
-      "community": 58,
-      "norm_label": "tool2()"
-    },
-    {
-      "label": "tool3()",
-      "file_type": "code",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L20",
-      "id": "scratch_test_selection_tool3",
-      "community": 58,
-      "norm_label": "tool3()"
-    },
-    {
-      "label": "tool4()",
-      "file_type": "code",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L24",
-      "id": "scratch_test_selection_tool4",
-      "community": 58,
-      "norm_label": "tool4()"
-    },
-    {
-      "label": "tool5()",
-      "file_type": "code",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L28",
-      "id": "scratch_test_selection_tool5",
-      "community": 58,
-      "norm_label": "tool5()"
-    },
-    {
-      "label": "search()",
-      "file_type": "code",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L33",
-      "id": "scratch_test_selection_search",
-      "community": 58,
-      "norm_label": "search()"
-    },
-    {
-      "label": "LoggingLLMToolSelectorMiddleware",
-      "file_type": "code",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L52",
-      "id": "scratch_test_selection_loggingllmtoolselectormiddleware",
-      "community": 58,
-      "norm_label": "loggingllmtoolselectormiddleware"
-    },
-    {
-      "label": "LLMToolSelectorMiddleware",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "id": "llmtoolselectormiddleware",
-      "community": 58,
-      "norm_label": "llmtoolselectormiddleware"
-    },
-    {
-      "label": "._process_selection_response()",
-      "file_type": "code",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L53",
-      "id": "scratch_test_selection_loggingllmtoolselectormiddleware_process_selection_response",
-      "community": 58,
-      "norm_label": "._process_selection_response()"
-    },
-    {
-      "label": "This is a calcualtor tools use this for calcualtions",
-      "file_type": "rationale",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L13",
-      "id": "scratch_test_selection_rationale_13",
-      "community": 58,
-      "norm_label": "this is a calcualtor tools use this for calcualtions"
-    },
-    {
-      "label": "This is a dice roll tool use this to roll dice",
-      "file_type": "rationale",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L17",
-      "id": "scratch_test_selection_rationale_17",
-      "community": 58,
-      "norm_label": "this is a dice roll tool use this to roll dice"
-    },
-    {
-      "label": "This is a send email tool use this to send email",
-      "file_type": "rationale",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L21",
-      "id": "scratch_test_selection_rationale_21",
-      "community": 58,
-      "norm_label": "this is a send email tool use this to send email"
-    },
-    {
-      "label": "This is a weather tool use this to get weather for a city",
-      "file_type": "rationale",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L25",
-      "id": "scratch_test_selection_rationale_25",
-      "community": 58,
-      "norm_label": "this is a weather tool use this to get weather for a city"
-    },
-    {
-      "label": "This is a news tool use this to get news for a topic",
-      "file_type": "rationale",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L29",
-      "id": "scratch_test_selection_rationale_29",
-      "community": 58,
-      "norm_label": "this is a news tool use this to get news for a topic"
-    },
-    {
-      "label": "Search the web for a query",
-      "file_type": "rationale",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L34",
-      "id": "scratch_test_selection_rationale_34",
-      "community": 58,
-      "norm_label": "search the web for a query"
-    },
-    {
       "label": "05_error_handling_and_retries.py",
       "file_type": "code",
       "source_file": "8_structured_output/05_error_handling_and_retries.py",
@@ -11947,69 +11713,6 @@
       "norm_label": "print banner with title."
     },
     {
-      "label": "middleware-todolist.py",
-      "file_type": "code",
-      "source_file": "_live/middleware-todolist.py",
-      "source_location": "L1",
-      "id": "live_middleware_todolist_py",
-      "community": 229,
-      "norm_label": "middleware-todolist.py"
-    },
-    {
-      "label": "read_file()",
-      "file_type": "code",
-      "source_file": "_live/middleware-todolist.py",
-      "source_location": "L11",
-      "id": "live_middleware_todolist_read_file",
-      "community": 229,
-      "norm_label": "read_file()"
-    },
-    {
-      "label": "write_file()",
-      "file_type": "code",
-      "source_file": "_live/middleware-todolist.py",
-      "source_location": "L18",
-      "id": "live_middleware_todolist_write_file",
-      "community": 229,
-      "norm_label": "write_file()"
-    },
-    {
-      "label": "run_tests()",
-      "file_type": "code",
-      "source_file": "_live/middleware-todolist.py",
-      "source_location": "L26",
-      "id": "live_middleware_todolist_run_tests",
-      "community": 229,
-      "norm_label": "run_tests()"
-    },
-    {
-      "label": "Read a file from the filesystem.",
-      "file_type": "rationale",
-      "source_file": "_live/middleware-todolist.py",
-      "source_location": "L12",
-      "id": "live_middleware_todolist_rationale_12",
-      "community": 229,
-      "norm_label": "read a file from the filesystem."
-    },
-    {
-      "label": "Write content to a file.",
-      "file_type": "rationale",
-      "source_file": "_live/middleware-todolist.py",
-      "source_location": "L19",
-      "id": "live_middleware_todolist_rationale_19",
-      "community": 229,
-      "norm_label": "write content to a file."
-    },
-    {
-      "label": "Run tests in a given directory.",
-      "file_type": "rationale",
-      "source_file": "_live/middleware-todolist.py",
-      "source_location": "L27",
-      "id": "live_middleware_todolist_rationale_27",
-      "community": 229,
-      "norm_label": "run tests in a given directory."
-    },
-    {
       "label": "prompts.py",
       "file_type": "code",
       "source_file": "_live/prompts.py",
@@ -12170,123 +11873,6 @@
       "id": "live_messages_py",
       "community": 221,
       "norm_label": "messages.py"
-    },
-    {
-      "label": "middelware-LLMToolSelection.py",
-      "file_type": "code",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L1",
-      "id": "live_middelware_llmtoolselection_py",
-      "community": 227,
-      "norm_label": "middelware-llmtoolselection.py"
-    },
-    {
-      "label": "tool1()",
-      "file_type": "code",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L13",
-      "id": "live_middelware_llmtoolselection_tool1",
-      "community": 227,
-      "norm_label": "tool1()"
-    },
-    {
-      "label": "tool2()",
-      "file_type": "code",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L23",
-      "id": "live_middelware_llmtoolselection_tool2",
-      "community": 227,
-      "norm_label": "tool2()"
-    },
-    {
-      "label": "tool3()",
-      "file_type": "code",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L30",
-      "id": "live_middelware_llmtoolselection_tool3",
-      "community": 227,
-      "norm_label": "tool3()"
-    },
-    {
-      "label": "tool4()",
-      "file_type": "code",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L35",
-      "id": "live_middelware_llmtoolselection_tool4",
-      "community": 227,
-      "norm_label": "tool4()"
-    },
-    {
-      "label": "tool5()",
-      "file_type": "code",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L48",
-      "id": "live_middelware_llmtoolselection_tool5",
-      "community": 227,
-      "norm_label": "tool5()"
-    },
-    {
-      "label": "search()",
-      "file_type": "code",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L54",
-      "id": "live_middelware_llmtoolselection_search",
-      "community": 227,
-      "norm_label": "search()"
-    },
-    {
-      "label": "This is a calculator tool, use this for calculations.",
-      "file_type": "rationale",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L14",
-      "id": "live_middelware_llmtoolselection_rationale_14",
-      "community": 227,
-      "norm_label": "this is a calculator tool, use this for calculations."
-    },
-    {
-      "label": "This is a dice roll tool, use this to roll dice.",
-      "file_type": "rationale",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L24",
-      "id": "live_middelware_llmtoolselection_rationale_24",
-      "community": 227,
-      "norm_label": "this is a dice roll tool, use this to roll dice."
-    },
-    {
-      "label": "This is a send email tool, use this to send email.",
-      "file_type": "rationale",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L31",
-      "id": "live_middelware_llmtoolselection_rationale_31",
-      "community": 227,
-      "norm_label": "this is a send email tool, use this to send email."
-    },
-    {
-      "label": "This is a weather tool, use this to get weather for a city.",
-      "file_type": "rationale",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L36",
-      "id": "live_middelware_llmtoolselection_rationale_36",
-      "community": 227,
-      "norm_label": "this is a weather tool, use this to get weather for a city."
-    },
-    {
-      "label": "This is a news tool, use this to get news for a topic.",
-      "file_type": "rationale",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L49",
-      "id": "live_middelware_llmtoolselection_rationale_49",
-      "community": 227,
-      "norm_label": "this is a news tool, use this to get news for a topic."
-    },
-    {
-      "label": "Search the web for a query",
-      "file_type": "rationale",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L55",
-      "id": "live_middelware_llmtoolselection_rationale_55",
-      "community": 227,
-      "norm_label": "search the web for a query"
     },
     {
       "label": "custom_decorator_based_middleware.py",
@@ -13275,7 +12861,7 @@
       "source_file": "15_multi_agent/03_handoffs.py",
       "source_location": "L120",
       "id": "15_multi_agent_03_handoffs_rationale_120",
-      "community": 9,
+      "community": 4,
       "norm_label": "classify the issue and advance to the resolve step."
     },
     {
@@ -15669,7 +15255,7 @@
       "source_file": "12_context_engineering/04_model_context_response_format.py",
       "source_location": "L95",
       "id": "12_context_engineering_04_model_context_response_format_state_based_output_format",
-      "community": 21,
+      "community": 58,
       "norm_label": "state_based_output_format()"
     },
     {
@@ -15678,7 +15264,7 @@
       "source_file": "12_context_engineering/04_model_context_response_format.py",
       "source_location": "L95",
       "id": "12_context_engineering_04_model_context_response_format_py_modelrequest",
-      "community": 21,
+      "community": 58,
       "norm_label": "modelrequest"
     },
     {
@@ -15687,7 +15273,7 @@
       "source_file": "12_context_engineering/04_model_context_response_format.py",
       "source_location": "L95",
       "id": "12_context_engineering_04_model_context_response_format_py_modelresponse",
-      "community": 21,
+      "community": 58,
       "norm_label": "modelresponse"
     },
     {
@@ -15705,7 +15291,7 @@
       "source_file": "12_context_engineering/04_model_context_response_format.py",
       "source_location": "L156",
       "id": "12_context_engineering_04_model_context_response_format_store_based_output_format",
-      "community": 21,
+      "community": 58,
       "norm_label": "store_based_output_format()"
     },
     {
@@ -15723,7 +15309,7 @@
       "source_file": "12_context_engineering/04_model_context_response_format.py",
       "source_location": "L220",
       "id": "12_context_engineering_04_model_context_response_format_context_based_output_format",
-      "community": 21,
+      "community": 58,
       "norm_label": "context_based_output_format()"
     },
     {
@@ -15741,7 +15327,7 @@
       "source_file": "12_context_engineering/04_model_context_response_format.py",
       "source_location": "L276",
       "id": "12_context_engineering_04_model_context_response_format_combined_format_and_tools",
-      "community": 21,
+      "community": 58,
       "norm_label": "combined_format_and_tools()"
     },
     {
@@ -15831,7 +15417,7 @@
       "source_file": "12_context_engineering/04_model_context_response_format.py",
       "source_location": "L99",
       "id": "12_context_engineering_04_model_context_response_format_rationale_99",
-      "community": 21,
+      "community": 58,
       "norm_label": "select output schema based on conversation length in state."
     },
     {
@@ -15840,7 +15426,7 @@
       "source_file": "12_context_engineering/04_model_context_response_format.py",
       "source_location": "L160",
       "id": "12_context_engineering_04_model_context_response_format_rationale_160",
-      "community": 21,
+      "community": 58,
       "norm_label": "select schema based on the user's saved verbosity preference."
     },
     {
@@ -15849,7 +15435,7 @@
       "source_file": "12_context_engineering/04_model_context_response_format.py",
       "source_location": "L224",
       "id": "12_context_engineering_04_model_context_response_format_rationale_224",
-      "community": 21,
+      "community": 58,
       "norm_label": "select output schema from runtime context role + environment."
     },
     {
@@ -15858,7 +15444,7 @@
       "source_file": "12_context_engineering/04_model_context_response_format.py",
       "source_location": "L280",
       "id": "12_context_engineering_04_model_context_response_format_rationale_280",
-      "community": 21,
+      "community": 58,
       "norm_label": "apply both tool filtering and output format selection."
     },
     {
@@ -23045,9 +22631,9 @@
       "source_file": "scratch.py",
       "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "scratch_py",
-      "target": "langchain_scratch_calculator"
+      "target": "langchain_scratch_calculator",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -23055,165 +22641,8 @@
       "source_file": "scratch.py",
       "source_location": "L18",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "scratch_py",
-      "target": "langchain_scratch_dice_roll"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app.py",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "app_py",
-      "target": "langchain_app_calculator",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "app.py",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "langchain_app_rationale_2",
-      "target": "langchain_app_calculator",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "test_app.py",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "test_app_py",
-      "target": "langchain_app_calculator",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "test_app.py",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "langchain_test_app_test_calculator_add",
-      "target": "langchain_app_calculator",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "test_app.py",
-      "source_location": "L11",
-      "weight": 1.0,
-      "source": "langchain_test_app_test_calculator_subtract",
-      "target": "langchain_app_calculator",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "test_app.py",
-      "source_location": "L15",
-      "weight": 1.0,
-      "source": "langchain_test_app_test_calculator_multiply",
-      "target": "langchain_app_calculator",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "test_app.py",
-      "source_location": "L19",
-      "weight": 1.0,
-      "source": "langchain_test_app_test_calculator_divide",
-      "target": "langchain_app_calculator",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "test_app.py",
-      "source_location": "L24",
-      "weight": 1.0,
-      "source": "langchain_test_app_test_calculator_divide_by_zero",
-      "target": "langchain_app_calculator",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "test_app.py",
-      "source_location": "L29",
-      "weight": 1.0,
-      "source": "langchain_test_app_test_calculator_unsupported_operation",
-      "target": "langchain_app_calculator",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "test_app.py",
-      "source_location": "L6",
-      "weight": 1.0,
-      "source": "test_app_py",
-      "target": "langchain_test_app_test_calculator_add",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "test_app.py",
-      "source_location": "L10",
-      "weight": 1.0,
-      "source": "test_app_py",
-      "target": "langchain_test_app_test_calculator_subtract",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "test_app.py",
-      "source_location": "L14",
-      "weight": 1.0,
-      "source": "test_app_py",
-      "target": "langchain_test_app_test_calculator_multiply",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "test_app.py",
-      "source_location": "L18",
-      "weight": 1.0,
-      "source": "test_app_py",
-      "target": "langchain_test_app_test_calculator_divide",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "test_app.py",
-      "source_location": "L22",
-      "weight": 1.0,
-      "source": "test_app_py",
-      "target": "langchain_test_app_test_calculator_divide_by_zero",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "test_app.py",
-      "source_location": "L27",
-      "weight": 1.0,
-      "source": "test_app_py",
-      "target": "langchain_test_app_test_calculator_unsupported_operation",
+      "target": "langchain_scratch_dice_roll",
       "confidence_score": 1.0
     },
     {
@@ -23954,9 +23383,9 @@
       "source_file": "_live/middleware_check_for_blocked_content.py",
       "source_location": "L33",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_check_for_blocked_content_blockedcontentmiddleware",
-      "target": "agentmiddleware"
+      "target": "agentmiddleware",
+      "confidence_score": 1.0
     },
     {
       "relation": "inherits",
@@ -23964,9 +23393,9 @@
       "source_file": "_live/custom_class_based_middlesware.py",
       "source_location": "L34",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_class_based_middlesware_loggingmiddleware",
-      "target": "agentmiddleware"
+      "target": "agentmiddleware",
+      "confidence_score": 1.0
     },
     {
       "relation": "inherits",
@@ -36512,156 +35941,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L12",
-      "weight": 1.0,
-      "source": "scratch_test_selection_py",
-      "target": "scratch_test_selection_tool1",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L16",
-      "weight": 1.0,
-      "source": "scratch_test_selection_py",
-      "target": "scratch_test_selection_tool2",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L20",
-      "weight": 1.0,
-      "source": "scratch_test_selection_py",
-      "target": "scratch_test_selection_tool3",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L24",
-      "weight": 1.0,
-      "source": "scratch_test_selection_py",
-      "target": "scratch_test_selection_tool4",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L28",
-      "weight": 1.0,
-      "source": "scratch_test_selection_py",
-      "target": "scratch_test_selection_tool5",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L33",
-      "weight": 1.0,
-      "source": "scratch_test_selection_py",
-      "target": "scratch_test_selection_search",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L52",
-      "weight": 1.0,
-      "source": "scratch_test_selection_py",
-      "target": "scratch_test_selection_loggingllmtoolselectormiddleware",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L13",
-      "weight": 1.0,
-      "source": "scratch_test_selection_rationale_13",
-      "target": "scratch_test_selection_tool1",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L17",
-      "weight": 1.0,
-      "source": "scratch_test_selection_rationale_17",
-      "target": "scratch_test_selection_tool2",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L21",
-      "weight": 1.0,
-      "source": "scratch_test_selection_rationale_21",
-      "target": "scratch_test_selection_tool3",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L25",
-      "weight": 1.0,
-      "source": "scratch_test_selection_rationale_25",
-      "target": "scratch_test_selection_tool4",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L29",
-      "weight": 1.0,
-      "source": "scratch_test_selection_rationale_29",
-      "target": "scratch_test_selection_tool5",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L34",
-      "weight": 1.0,
-      "source": "scratch_test_selection_rationale_34",
-      "target": "scratch_test_selection_search",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "inherits",
-      "confidence": "EXTRACTED",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L52",
-      "weight": 1.0,
-      "source": "scratch_test_selection_loggingllmtoolselectormiddleware",
-      "target": "llmtoolselectormiddleware",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "scratch/test_selection.py",
-      "source_location": "L53",
-      "weight": 1.0,
-      "source": "scratch_test_selection_loggingllmtoolselectormiddleware",
-      "target": "scratch_test_selection_loggingllmtoolselectormiddleware_process_selection_response",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "8_structured_output/05_error_handling_and_retries.py",
       "source_location": "L39",
       "weight": 1.0,
@@ -42214,9 +41493,9 @@
       "source_file": "_live/middleware-summarization.py",
       "source_location": "L35",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_summarization_py",
-      "target": "live_middleware_summarization_calculator"
+      "target": "live_middleware_summarization_calculator",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42224,9 +41503,9 @@
       "source_file": "_live/middleware-summarization.py",
       "source_location": "L45",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_summarization_py",
-      "target": "live_middleware_summarization_dice_roll"
+      "target": "live_middleware_summarization_dice_roll",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42234,9 +41513,9 @@
       "source_file": "_live/middleware-summarization.py",
       "source_location": "L52",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_summarization_py",
-      "target": "live_middleware_summarization_send_email"
+      "target": "live_middleware_summarization_send_email",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42244,9 +41523,9 @@
       "source_file": "_live/middleware-summarization.py",
       "source_location": "L36",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_summarization_rationale_36",
-      "target": "live_middleware_summarization_calculator"
+      "target": "live_middleware_summarization_calculator",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42254,9 +41533,9 @@
       "source_file": "_live/middleware-summarization.py",
       "source_location": "L46",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_summarization_rationale_46",
-      "target": "live_middleware_summarization_dice_roll"
+      "target": "live_middleware_summarization_dice_roll",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42264,9 +41543,9 @@
       "source_file": "_live/middleware-summarization.py",
       "source_location": "L53",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_summarization_rationale_53",
-      "target": "live_middleware_summarization_send_email"
+      "target": "live_middleware_summarization_send_email",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42274,9 +41553,9 @@
       "source_file": "_live/models.py",
       "source_location": "L25",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_models_py",
-      "target": "live_models_calculate"
+      "target": "live_models_calculate",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42284,9 +41563,9 @@
       "source_file": "_live/models.py",
       "source_location": "L34",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_models_py",
-      "target": "live_models_discount_calculator"
+      "target": "live_models_discount_calculator",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42294,9 +41573,9 @@
       "source_file": "_live/models.py",
       "source_location": "L44",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_models_py",
-      "target": "live_models_get_weather"
+      "target": "live_models_get_weather",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42304,9 +41583,9 @@
       "source_file": "_live/models.py",
       "source_location": "L26",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_models_rationale_26",
-      "target": "live_models_calculate"
+      "target": "live_models_calculate",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42314,9 +41593,9 @@
       "source_file": "_live/models.py",
       "source_location": "L35",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_models_rationale_35",
-      "target": "live_models_discount_calculator"
+      "target": "live_models_discount_calculator",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42324,9 +41603,9 @@
       "source_file": "_live/models.py",
       "source_location": "L45",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_models_rationale_45",
-      "target": "live_models_get_weather"
+      "target": "live_models_get_weather",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42334,9 +41613,9 @@
       "source_file": "_live/HITL.py",
       "source_location": "L12",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_hitl_py",
-      "target": "live_hitl_read_email_tool"
+      "target": "live_hitl_read_email_tool",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42344,9 +41623,9 @@
       "source_file": "_live/HITL.py",
       "source_location": "L17",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_hitl_py",
-      "target": "live_hitl_send_email_tool"
+      "target": "live_hitl_send_email_tool",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42354,9 +41633,9 @@
       "source_file": "_live/HITL.py",
       "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_hitl_rationale_13",
-      "target": "live_hitl_read_email_tool"
+      "target": "live_hitl_read_email_tool",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42364,9 +41643,9 @@
       "source_file": "_live/HITL.py",
       "source_location": "L18",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_hitl_rationale_18",
-      "target": "live_hitl_send_email_tool"
+      "target": "live_hitl_send_email_tool",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42374,9 +41653,9 @@
       "source_file": "_live/middleware-toll-call-limit.py",
       "source_location": "L17",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_toll_call_limit_py",
-      "target": "live_middleware_toll_call_limit_calculate"
+      "target": "live_middleware_toll_call_limit_calculate",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42384,9 +41663,9 @@
       "source_file": "_live/middleware-toll-call-limit.py",
       "source_location": "L26",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_toll_call_limit_py",
-      "target": "live_middleware_toll_call_limit_discount_calculator"
+      "target": "live_middleware_toll_call_limit_discount_calculator",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42394,9 +41673,9 @@
       "source_file": "_live/middleware-toll-call-limit.py",
       "source_location": "L36",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_toll_call_limit_py",
-      "target": "live_middleware_toll_call_limit_get_weather"
+      "target": "live_middleware_toll_call_limit_get_weather",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42404,9 +41683,9 @@
       "source_file": "_live/middleware-toll-call-limit.py",
       "source_location": "L18",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_toll_call_limit_rationale_18",
-      "target": "live_middleware_toll_call_limit_calculate"
+      "target": "live_middleware_toll_call_limit_calculate",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42414,9 +41693,9 @@
       "source_file": "_live/middleware-toll-call-limit.py",
       "source_location": "L27",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_toll_call_limit_rationale_27",
-      "target": "live_middleware_toll_call_limit_discount_calculator"
+      "target": "live_middleware_toll_call_limit_discount_calculator",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42424,9 +41703,9 @@
       "source_file": "_live/middleware-toll-call-limit.py",
       "source_location": "L37",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_toll_call_limit_rationale_37",
-      "target": "live_middleware_toll_call_limit_get_weather"
+      "target": "live_middleware_toll_call_limit_get_weather",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42434,9 +41713,9 @@
       "source_file": "_live/parsers.py",
       "source_location": "L17",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_parsers_py",
-      "target": "live_parsers_print_banner"
+      "target": "live_parsers_print_banner",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42444,68 +41723,8 @@
       "source_file": "_live/parsers.py",
       "source_location": "L18",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_parsers_rationale_18",
-      "target": "live_parsers_print_banner"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "_live/middleware-todolist.py",
-      "source_location": "L11",
-      "weight": 1.0,
-      "source": "live_middleware_todolist_py",
-      "target": "live_middleware_todolist_read_file",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "_live/middleware-todolist.py",
-      "source_location": "L18",
-      "weight": 1.0,
-      "source": "live_middleware_todolist_py",
-      "target": "live_middleware_todolist_write_file",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "_live/middleware-todolist.py",
-      "source_location": "L26",
-      "weight": 1.0,
-      "source": "live_middleware_todolist_py",
-      "target": "live_middleware_todolist_run_tests",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "_live/middleware-todolist.py",
-      "source_location": "L12",
-      "weight": 1.0,
-      "source": "live_middleware_todolist_rationale_12",
-      "target": "live_middleware_todolist_read_file",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "_live/middleware-todolist.py",
-      "source_location": "L19",
-      "weight": 1.0,
-      "source": "live_middleware_todolist_rationale_19",
-      "target": "live_middleware_todolist_write_file",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "_live/middleware-todolist.py",
-      "source_location": "L27",
-      "weight": 1.0,
-      "source": "live_middleware_todolist_rationale_27",
-      "target": "live_middleware_todolist_run_tests",
+      "target": "live_parsers_print_banner",
       "confidence_score": 1.0
     },
     {
@@ -42514,9 +41733,9 @@
       "source_file": "_live/agents.py",
       "source_location": "L14",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_agents_py",
-      "target": "live_agents_calculate"
+      "target": "live_agents_calculate",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42524,9 +41743,9 @@
       "source_file": "_live/agents.py",
       "source_location": "L23",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_agents_py",
-      "target": "live_agents_discount_calculator"
+      "target": "live_agents_discount_calculator",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42534,9 +41753,9 @@
       "source_file": "_live/agents.py",
       "source_location": "L33",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_agents_py",
-      "target": "live_agents_get_weather"
+      "target": "live_agents_get_weather",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42544,9 +41763,9 @@
       "source_file": "_live/agents.py",
       "source_location": "L15",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_agents_rationale_15",
-      "target": "live_agents_calculate"
+      "target": "live_agents_calculate",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42554,9 +41773,9 @@
       "source_file": "_live/agents.py",
       "source_location": "L24",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_agents_rationale_24",
-      "target": "live_agents_discount_calculator"
+      "target": "live_agents_discount_calculator",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42564,9 +41783,9 @@
       "source_file": "_live/agents.py",
       "source_location": "L34",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_agents_rationale_34",
-      "target": "live_agents_get_weather"
+      "target": "live_agents_get_weather",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42574,9 +41793,9 @@
       "source_file": "_live/runnables.py",
       "source_location": "L24",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_runnables_py",
-      "target": "live_runnables_retrieve_knowledge"
+      "target": "live_runnables_retrieve_knowledge",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42584,9 +41803,9 @@
       "source_file": "_live/runnables.py",
       "source_location": "L37",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_runnables_py",
-      "target": "live_runnables_format_docs"
+      "target": "live_runnables_format_docs",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42594,9 +41813,9 @@
       "source_file": "_live/middleware-pii.py",
       "source_location": "L66",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_pii_py",
-      "target": "live_middleware_pii_passes_verhoeff"
+      "target": "live_middleware_pii_passes_verhoeff",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42604,9 +41823,9 @@
       "source_file": "_live/middleware-pii.py",
       "source_location": "L100",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_pii_py",
-      "target": "live_middleware_pii_detect_aadhaar"
+      "target": "live_middleware_pii_detect_aadhaar",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -42615,9 +41834,9 @@
       "source_file": "_live/middleware-pii.py",
       "source_location": "L116",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_pii_detect_aadhaar",
-      "target": "live_middleware_pii_passes_verhoeff"
+      "target": "live_middleware_pii_passes_verhoeff",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42625,9 +41844,9 @@
       "source_file": "_live/middleware-pii.py",
       "source_location": "L67",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_pii_rationale_67",
-      "target": "live_middleware_pii_passes_verhoeff"
+      "target": "live_middleware_pii_passes_verhoeff",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42635,128 +41854,8 @@
       "source_file": "_live/middleware-pii.py",
       "source_location": "L101",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_pii_rationale_101",
-      "target": "live_middleware_pii_detect_aadhaar"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L13",
-      "weight": 1.0,
-      "source": "live_middelware_llmtoolselection_py",
-      "target": "live_middelware_llmtoolselection_tool1",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L23",
-      "weight": 1.0,
-      "source": "live_middelware_llmtoolselection_py",
-      "target": "live_middelware_llmtoolselection_tool2",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L30",
-      "weight": 1.0,
-      "source": "live_middelware_llmtoolselection_py",
-      "target": "live_middelware_llmtoolselection_tool3",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L35",
-      "weight": 1.0,
-      "source": "live_middelware_llmtoolselection_py",
-      "target": "live_middelware_llmtoolselection_tool4",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L48",
-      "weight": 1.0,
-      "source": "live_middelware_llmtoolselection_py",
-      "target": "live_middelware_llmtoolselection_tool5",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L54",
-      "weight": 1.0,
-      "source": "live_middelware_llmtoolselection_py",
-      "target": "live_middelware_llmtoolselection_search",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L14",
-      "weight": 1.0,
-      "source": "live_middelware_llmtoolselection_rationale_14",
-      "target": "live_middelware_llmtoolselection_tool1",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L24",
-      "weight": 1.0,
-      "source": "live_middelware_llmtoolselection_rationale_24",
-      "target": "live_middelware_llmtoolselection_tool2",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L31",
-      "weight": 1.0,
-      "source": "live_middelware_llmtoolselection_rationale_31",
-      "target": "live_middelware_llmtoolselection_tool3",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L36",
-      "weight": 1.0,
-      "source": "live_middelware_llmtoolselection_rationale_36",
-      "target": "live_middelware_llmtoolselection_tool4",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L49",
-      "weight": 1.0,
-      "source": "live_middelware_llmtoolselection_rationale_49",
-      "target": "live_middelware_llmtoolselection_tool5",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "_live/middelware-LLMToolSelection.py",
-      "source_location": "L55",
-      "weight": 1.0,
-      "source": "live_middelware_llmtoolselection_rationale_55",
-      "target": "live_middelware_llmtoolselection_search",
+      "target": "live_middleware_pii_detect_aadhaar",
       "confidence_score": 1.0
     },
     {
@@ -42765,9 +41864,9 @@
       "source_file": "_live/custom_decorator_based_middleware.py",
       "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_decorator_based_middleware_py",
-      "target": "live_custom_decorator_based_middleware_weather"
+      "target": "live_custom_decorator_based_middleware_weather",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42775,9 +41874,9 @@
       "source_file": "_live/custom_decorator_based_middleware.py",
       "source_location": "L22",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_decorator_based_middleware_py",
-      "target": "live_custom_decorator_based_middleware_print_a_message_before_agent_executes"
+      "target": "live_custom_decorator_based_middleware_print_a_message_before_agent_executes",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42785,9 +41884,9 @@
       "source_file": "_live/custom_decorator_based_middleware.py",
       "source_location": "L30",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_decorator_based_middleware_py",
-      "target": "live_custom_decorator_based_middleware_print_a_message_before_model_executes"
+      "target": "live_custom_decorator_based_middleware_print_a_message_before_model_executes",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42795,9 +41894,9 @@
       "source_file": "_live/custom_decorator_based_middleware.py",
       "source_location": "L37",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_decorator_based_middleware_py",
-      "target": "live_custom_decorator_based_middleware_print_a_message_after_model_executes"
+      "target": "live_custom_decorator_based_middleware_print_a_message_after_model_executes",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42805,9 +41904,9 @@
       "source_file": "_live/custom_decorator_based_middleware.py",
       "source_location": "L44",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_decorator_based_middleware_py",
-      "target": "live_custom_decorator_based_middleware_print_a_message_after_agent_executes"
+      "target": "live_custom_decorator_based_middleware_print_a_message_after_agent_executes",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42815,9 +41914,9 @@
       "source_file": "_live/custom_decorator_based_middleware.py",
       "source_location": "L51",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_decorator_based_middleware_py",
-      "target": "live_custom_decorator_based_middleware_print_a_message_before_model_call"
+      "target": "live_custom_decorator_based_middleware_print_a_message_before_model_call",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42825,9 +41924,9 @@
       "source_file": "_live/custom_decorator_based_middleware.py",
       "source_location": "L60",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_decorator_based_middleware_py",
-      "target": "live_custom_decorator_based_middleware_print_a_message_before_tool_call"
+      "target": "live_custom_decorator_based_middleware_print_a_message_before_tool_call",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42835,9 +41934,9 @@
       "source_file": "_live/custom_decorator_based_middleware.py",
       "source_location": "L14",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_decorator_based_middleware_rationale_14",
-      "target": "live_custom_decorator_based_middleware_weather"
+      "target": "live_custom_decorator_based_middleware_weather",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42845,9 +41944,9 @@
       "source_file": "_live/middleware_check_for_blocked_content.py",
       "source_location": "L22",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_check_for_blocked_content_py",
-      "target": "live_middleware_check_for_blocked_content_weather"
+      "target": "live_middleware_check_for_blocked_content_weather",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42855,9 +41954,9 @@
       "source_file": "_live/middleware_check_for_blocked_content.py",
       "source_location": "L28",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_check_for_blocked_content_py",
-      "target": "live_middleware_check_for_blocked_content_calculate"
+      "target": "live_middleware_check_for_blocked_content_calculate",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42865,9 +41964,9 @@
       "source_file": "_live/middleware_check_for_blocked_content.py",
       "source_location": "L33",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_check_for_blocked_content_py",
-      "target": "live_middleware_check_for_blocked_content_blockedcontentmiddleware"
+      "target": "live_middleware_check_for_blocked_content_blockedcontentmiddleware",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42875,9 +41974,9 @@
       "source_file": "_live/middleware_check_for_blocked_content.py",
       "source_location": "L35",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_check_for_blocked_content_py",
-      "target": "live_middleware_check_for_blocked_content_after_model"
+      "target": "live_middleware_check_for_blocked_content_after_model",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42885,9 +41984,9 @@
       "source_file": "_live/middleware_check_for_blocked_content.py",
       "source_location": "L23",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_check_for_blocked_content_rationale_23",
-      "target": "live_middleware_check_for_blocked_content_weather"
+      "target": "live_middleware_check_for_blocked_content_weather",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42895,9 +41994,9 @@
       "source_file": "_live/middleware_check_for_blocked_content.py",
       "source_location": "L29",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_check_for_blocked_content_rationale_29",
-      "target": "live_middleware_check_for_blocked_content_calculate"
+      "target": "live_middleware_check_for_blocked_content_calculate",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -42905,9 +42004,9 @@
       "source_file": "_live/middleware_check_for_blocked_content.py",
       "source_location": "L46",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_middleware_check_for_blocked_content_blockedcontentmiddleware",
-      "target": "live_middleware_check_for_blocked_content_blockedcontentmiddleware_before_model"
+      "target": "live_middleware_check_for_blocked_content_blockedcontentmiddleware_before_model",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42915,9 +42014,9 @@
       "source_file": "_live/custom_class_based_middlesware.py",
       "source_location": "L19",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_class_based_middlesware_py",
-      "target": "live_custom_class_based_middlesware_calculator"
+      "target": "live_custom_class_based_middlesware_calculator",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42925,9 +42024,9 @@
       "source_file": "_live/custom_class_based_middlesware.py",
       "source_location": "L29",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_class_based_middlesware_py",
-      "target": "live_custom_class_based_middlesware_weather"
+      "target": "live_custom_class_based_middlesware_weather",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -42935,9 +42034,9 @@
       "source_file": "_live/custom_class_based_middlesware.py",
       "source_location": "L34",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_class_based_middlesware_py",
-      "target": "live_custom_class_based_middlesware_loggingmiddleware"
+      "target": "live_custom_class_based_middlesware_loggingmiddleware",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42945,9 +42044,9 @@
       "source_file": "_live/custom_class_based_middlesware.py",
       "source_location": "L20",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_class_based_middlesware_rationale_20",
-      "target": "live_custom_class_based_middlesware_calculator"
+      "target": "live_custom_class_based_middlesware_calculator",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -42955,9 +42054,9 @@
       "source_file": "_live/custom_class_based_middlesware.py",
       "source_location": "L30",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_class_based_middlesware_rationale_30",
-      "target": "live_custom_class_based_middlesware_weather"
+      "target": "live_custom_class_based_middlesware_weather",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -42965,9 +42064,9 @@
       "source_file": "_live/custom_class_based_middlesware.py",
       "source_location": "L35",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_class_based_middlesware_loggingmiddleware",
-      "target": "live_custom_class_based_middlesware_loggingmiddleware_before_agent"
+      "target": "live_custom_class_based_middlesware_loggingmiddleware_before_agent",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -42975,9 +42074,9 @@
       "source_file": "_live/custom_class_based_middlesware.py",
       "source_location": "L40",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_class_based_middlesware_loggingmiddleware",
-      "target": "live_custom_class_based_middlesware_loggingmiddleware_before_model"
+      "target": "live_custom_class_based_middlesware_loggingmiddleware_before_model",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -42985,9 +42084,9 @@
       "source_file": "_live/custom_class_based_middlesware.py",
       "source_location": "L47",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_class_based_middlesware_loggingmiddleware",
-      "target": "live_custom_class_based_middlesware_loggingmiddleware_wrap_model_call"
+      "target": "live_custom_class_based_middlesware_loggingmiddleware_wrap_model_call",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -42995,9 +42094,9 @@
       "source_file": "_live/custom_class_based_middlesware.py",
       "source_location": "L66",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_class_based_middlesware_loggingmiddleware",
-      "target": "live_custom_class_based_middlesware_loggingmiddleware_wrap_tool_call"
+      "target": "live_custom_class_based_middlesware_loggingmiddleware_wrap_tool_call",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -43005,9 +42104,9 @@
       "source_file": "_live/custom_class_based_middlesware.py",
       "source_location": "L75",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_class_based_middlesware_loggingmiddleware",
-      "target": "live_custom_class_based_middlesware_loggingmiddleware_after_model"
+      "target": "live_custom_class_based_middlesware_loggingmiddleware_after_model",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -43015,9 +42114,9 @@
       "source_file": "_live/custom_class_based_middlesware.py",
       "source_location": "L79",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_class_based_middlesware_loggingmiddleware",
-      "target": "live_custom_class_based_middlesware_loggingmiddleware_after_agent"
+      "target": "live_custom_class_based_middlesware_loggingmiddleware_after_agent",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -43025,9 +42124,9 @@
       "source_file": "_live/custom_class_based_middlesware.py",
       "source_location": "L83",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_class_based_middlesware_loggingmiddleware",
-      "target": "live_custom_class_based_middlesware_loggingmiddleware_abefore_model"
+      "target": "live_custom_class_based_middlesware_loggingmiddleware_abefore_model",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -43035,9 +42134,9 @@
       "source_file": "_live/custom_class_based_middlesware.py",
       "source_location": "L90",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "live_custom_class_based_middlesware_loggingmiddleware",
-      "target": "live_custom_class_based_middlesware_loggingmiddleware_aafter_model"
+      "target": "live_custom_class_based_middlesware_loggingmiddleware_aafter_model",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
