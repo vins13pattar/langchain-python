@@ -1,16 +1,16 @@
-# Graph Report - Langchain  (2026-07-03)
+# Graph Report - Langchain  (2026-07-07)
 
 ## Corpus Check
-- 172 files · ~139,313 words
+- 173 files · ~139,401 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2536 nodes · 3206 edges · 234 communities (151 shown, 83 thin omitted)
+- 2557 nodes · 3224 edges · 239 communities (155 shown, 84 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 37 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a257b70e`
+- Built from commit: `bc18abcb`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -207,6 +207,7 @@
 - [[_COMMUNITY_Community 189|Community 189]]
 - [[_COMMUNITY_Community 190|Community 190]]
 - [[_COMMUNITY_Community 191|Community 191]]
+- [[_COMMUNITY_Community 192|Community 192]]
 - [[_COMMUNITY_Community 194|Community 194]]
 - [[_COMMUNITY_Community 195|Community 195]]
 - [[_COMMUNITY_Community 196|Community 196]]
@@ -233,6 +234,10 @@
 - [[_COMMUNITY_Community 230|Community 230]]
 - [[_COMMUNITY_Community 231|Community 231]]
 - [[_COMMUNITY_Community 232|Community 232]]
+- [[_COMMUNITY_Community 234|Community 234]]
+- [[_COMMUNITY_Community 235|Community 235]]
+- [[_COMMUNITY_Community 236|Community 236]]
+- [[_COMMUNITY_Community 237|Community 237]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `MultiServerMCPClient` - 31 edges
@@ -249,24 +254,24 @@
 ## Surprising Connections (you probably didn't know these)
 - `ask_as()` --calls--> `HumanMessage`  [INFERRED]
   4_tools/03_tool_runtime_context.py → 3_messages/05_multimodal_messages.py
+- `shop()` --calls--> `HumanMessage`  [INFERRED]
+  4_tools/06_full_tools_showcase.py → 3_messages/05_multimodal_messages.py
 - `ask_as_role()` --calls--> `HumanMessage`  [INFERRED]
   4_tools/05_dynamic_tool_selection.py → 3_messages/05_multimodal_messages.py
 - `test_calculator_add()` --calls--> `calculator()`  [EXTRACTED]
   test_app.py → app.py
 - `test_calculator_subtract()` --calls--> `calculator()`  [EXTRACTED]
   test_app.py → app.py
-- `test_calculator_multiply()` --calls--> `calculator()`  [EXTRACTED]
-  test_app.py → app.py
 
-## Communities (234 total, 83 thin omitted)
+## Communities (239 total, 84 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.14
 Nodes (25): Save a memory of this interaction for future reference.     Use at the end of a, Save an episodic memory of this interaction. Call after meaningful exchanges., Save a behavioral rule. Call when user gives explicit instructions or corrects b, Save a semantic fact about the user (skill, preference, project info)., BehaviorRule, chat(), embed_fn(), Episode (+17 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.16
-Nodes (24): AppCtx, authenticate_user(), check_auth_status(), fetch_user_data(), get_user_preference(), bool, Command, str (+16 more)
+Cohesion: 0.06
+Nodes (64): fetch_user_preferences(), get_account_summary(), get_personalized_greeting(), long_running_analysis(), int, str, ToolRuntime, 02_tool_runtime.py ================== Demonstrates ToolRuntime — accessing the f (+56 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.06
@@ -285,12 +290,12 @@ Cohesion: 0.06
 Nodes (38): calculate(), chat_invoke(), chat_stream(), get_detailed_weather(), get_weather(), str, 01_agent_server.py =================== Backend: a LangChain agent exposed as a s, Get detailed weather data for structured display. (+30 more)
 
 ### Community 6 - "Community 6"
-Cohesion: 0.14
-Nodes (13): chat(), str, 02_conversation_history.py ========================== Demonstrates building and, Send a message, get a reply, and update the conversation history., image_file_to_message(), str, 05_multimodal_messages.py ========================= Demonstrates MULTIMODAL mess, Download an image URL and return (base64_string, mime_type). (+5 more)
+Cohesion: 0.17
+Nodes (8): InputValidationMiddleware, Any, Validates tool inputs against business rules before execution., ContentGuardrail, Measure LLM call latency., Block abuse/prompt injection attempts., TimingMiddleware, BaseMiddleware
 
 ### Community 7 - "Community 7"
-Cohesion: 0.09
-Nodes (34): add_to_cart(), admin_list_all_orders(), admin_update_stock(), CustomerCtx, filter_by_role(), get_order_history(), get_product_details(), handle_errors() (+26 more)
+Cohesion: 0.19
+Nodes (18): add_to_cart(), admin_list_all_orders(), admin_update_stock(), CustomerCtx, get_order_history(), get_product_details(), int, str (+10 more)
 
 ### Community 8 - "Community 8"
 Cohesion: 0.08
@@ -301,8 +306,8 @@ Cohesion: 0.09
 Nodes (34): agent_routing_prompt(), apply_solution(), check_warranty(), close_ticket(), filter_agent_tools(), filter_tools_by_step(), HandoffState, process_refund() (+26 more)
 
 ### Community 10 - "Community 10"
-Cohesion: 0.10
-Nodes (33): AdminLegalResponse, authenticate_session(), get_compliance_checklist(), get_saved_notes(), inject_jurisdiction_rules(), legal_system_prompt(), LegalCtx, AgentState (+25 more)
+Cohesion: 0.09
+Nodes (35): AdminLegalResponse, authenticate_session(), get_compliance_checklist(), get_saved_notes(), inject_jurisdiction_rules(), legal_system_prompt(), LegalCtx, LegalResearchResponse (+27 more)
 
 ### Community 11 - "Community 11"
 Cohesion: 0.10
@@ -313,8 +318,8 @@ Cohesion: 0.08
 Nodes (25): calculate(), get_weather(), str, 01_stream_events_basics.py =========================== Demonstrates the BASICS o, Get the current weather for a city.      Args:         city: City name, Evaluate a safe arithmetic expression.      Args:         expression: e.g. '2 +, calculate(), get_weather() (+17 more)
 
 ### Community 13 - "Community 13"
-Cohesion: 0.20
-Nodes (13): delete_database_tool(), float, str, 04_hitl_as_guardrail.py ======================= Demonstrates Human-in-the-Loop (, Search for information (safe — no approval needed)., Send an email to an external recipient. Requires human approval., Delete records from the database. IRREVERSIBLE — requires human approval., Transfer funds between accounts. High-risk — requires human approval. (+5 more)
+Cohesion: 0.23
+Nodes (11): ContentFilterMiddleware, delete_database_tool(), str, 04_hitl_as_guardrail.py ======================= Demonstrates Human-in-the-Loop (, Search for information (safe — no approval needed)., Send an email to an external recipient. Requires human approval., Delete records from the database. IRREVERSIBLE — requires human approval., search_tool() (+3 more)
 
 ### Community 14 - "Community 14"
 Cohesion: 0.11
@@ -461,8 +466,8 @@ Cohesion: 0.21
 Nodes (11): fetch_documentation(), fetch_url(), int, str, query_database(), 03_agentic_rag.py ================== Demonstrates Agentic RAG — an LLM agent dec, Fetch text content from a URL. Use for up-to-date web information.     Returns t, Fetch and return documentation content from an allowed domain.     Only allowed (+3 more)
 
 ### Community 50 - "Community 50"
-Cohesion: 0.15
-Nodes (14): SupportState, CustomState, HandoffState, StateWithDraft, SettingsState, filter_sensitive_content(), ProductivityState, Any (+6 more)
+Cohesion: 0.14
+Nodes (15): SupportState, CustomState, HandoffState, StateWithDraft, ShopState, SettingsState, filter_sensitive_content(), ProductivityState (+7 more)
 
 ### Community 51 - "Community 51"
 Cohesion: 0.19
@@ -681,12 +686,12 @@ Cohesion: 0.12
 Nodes (15): 1 — Auto Strategy (Pydantic, Dataclass, TypedDict), 2 — Strict Provider Strategy, 3 — Custom History Tool Messages, 4 — Intelligent Error Retrying, 8_structured_output — LangChain Structured Output Examples, code:bash (pip install -r requirements.txt), code:python (from pydantic import BaseModel), code:python (from langchain.agents.structured_output import ProviderStrat) (+7 more)
 
 ### Community 183 - "Community 183"
-Cohesion: 0.13
-Nodes (15): LegalResearchResponse, Standard legal research response., EpisodicMemory, get_personalised_answer(), ProceduralMemory, ProfileMemory, longterm_memory_overview.py — Long-Term Memory: all key concepts in one file Cov, Answer question using user profile and memories from long-term store. Args: ques (+7 more)
+Cohesion: 0.08
+Nodes (26): EpisodicMemory, get_personalised_answer(), ProceduralMemory, ProfileMemory, longterm_memory_overview.py — Long-Term Memory: all key concepts in one file Cov, Answer question using user profile and memories from long-term store. Args: ques, Save an important fact about the user to long-term memory. Args: fact., Recall all facts about the user from long-term memory. (+18 more)
 
 ### Community 184 - "Community 184"
-Cohesion: 0.13
-Nodes (13): ContactDataclass, ContactInfo, ContactPydantic, ContactTypedDict, lookup_order(), PersonProfile, ProductReview, structured_output_overview.py — LangChain Structured Output: all key concepts in (+5 more)
+Cohesion: 0.29
+Nodes (7): image_file_to_message(), str, 05_multimodal_messages.py ========================= Demonstrates MULTIMODAL mess, Download an image URL and return (base64_string, mime_type)., Create a HumanMessage from a local image file., url_to_base64(), Path
 
 ### Community 185 - "Community 185"
 Cohesion: 0.13
@@ -716,25 +721,29 @@ Nodes (8): delete_file(), str, 05_middleware.py ================ Demonstrates th
 Cohesion: 0.22
 Nodes (5): calculate(), get_weather(), streaming_overview.py — LangChain Agent Streaming Modes: all key concepts in one, Get weather for a city. Args: city: City name., Evaluate a safe arithmetic expression. Args: expression: e.g. '2 + 2
 
+### Community 192 - "Community 192"
+Cohesion: 0.29
+Nodes (4): BaseCallbackHandler, ModelInputCallbackHandler, Callback handler to print messages actually received by the LLM (model)., Callback handler to print messages actually received by the LLM (model).
+
 ### Community 194 - "Community 194"
-Cohesion: 0.18
-Nodes (22): ask_as(), get_last_user_message(), get_message_count(), get_my_account(), get_plan_features(), perform_admin_task(), str, ToolRuntime (+14 more)
+Cohesion: 0.32
+Nodes (7): calculate(), chat(), get_weather(), str, 06_full_messages_showcase.py ============================= A COMPLETE showcase c, Get the current weather for a city.      Args:         city: City name, Evaluate a mathematical expression.      Args:         expression: e.g. '2 + 2'
 
 ### Community 195 - "Community 195"
-Cohesion: 0.33
-Nodes (6): execute_trade(), float, int, Transfer funds between accounts (requires approval)., Execute a securities trade (requires approval)., transfer_funds()
+Cohesion: 0.22
+Nodes (9): float, Transfer funds between accounts. High-risk — requires human approval., transfer_funds(), execute_trade(), float, int, Transfer funds between accounts (requires approval)., Execute a securities trade (requires approval). (+1 more)
 
 ### Community 196 - "Community 196"
 Cohesion: 0.20
 Nodes (20): BehaviorRule, build_personalized_prompt(), embed_fn(), Episode, get_active_rules(), float, str, ToolRuntime (+12 more)
 
 ### Community 197 - "Community 197"
-Cohesion: 0.40
-Nodes (4): ContentFilterMiddleware, AgentState, Any, Runtime
+Cohesion: 0.50
+Nodes (3): AgentState, Any, Runtime
 
 ### Community 198 - "Community 198"
-Cohesion: 0.20
-Nodes (18): fetch_user_preferences(), get_account_summary(), get_personalized_greeting(), long_running_analysis(), int, str, ToolRuntime, 02_tool_runtime.py ================== Demonstrates ToolRuntime — accessing the f (+10 more)
+Cohesion: 0.29
+Nodes (7): handle_errors(), place_order(), Command, ToolCallRequest, ToolMessage, Place an order for all items in the cart.      Clears the cart and saves order t, Gracefully handle any tool errors.
 
 ### Community 199 - "Community 199"
 Cohesion: 0.21
@@ -749,8 +758,8 @@ Cohesion: 0.14
 Nodes (5): calculator(), LoggingMiddleware, Evaluate an arithmetic expression and return the result, Get the weather for a city, weather()
 
 ### Community 204 - "Community 204"
-Cohesion: 0.17
-Nodes (8): InputValidationMiddleware, Any, Validates tool inputs against business rules before execution., ContentGuardrail, Measure LLM call latency., Block abuse/prompt injection attempts., TimingMiddleware, BaseMiddleware
+Cohesion: 0.29
+Nodes (6): calculate(), discount_calculator(), get_weather(), Calculate a mathematical expression., Calculate the discounted price., Get the current weather for a location.
 
 ### Community 205 - "Community 205"
 Cohesion: 0.22
@@ -793,17 +802,29 @@ Cohesion: 0.29
 Nodes (6): Read a file from the filesystem., Write content to a file., Run tests in a given directory., read_file(), run_tests(), write_file()
 
 ### Community 230 - "Community 230"
-Cohesion: 0.32
-Nodes (7): calculate(), chat(), get_weather(), str, 06_full_messages_showcase.py ============================= A COMPLETE showcase c, Get the current weather for a city.      Args:         city: City name, Evaluate a mathematical expression.      Args:         expression: e.g. '2 + 2'
+Cohesion: 0.29
+Nodes (6): calculate(), discount_calculator(), get_weather(), Calculate a mathematical expression., Calculate the discounted price., Get the current weather for a location.
 
 ### Community 231 - "Community 231"
 Cohesion: 0.32
 Nodes (7): ContactDataclass, ContactPydantic, ContactTypedDict, 01_auto_strategy.py =================== Demonstrates AUTO-STRATEGY selection in, Contact information for a person., Contact information for a person., Contact information for a person.
 
+### Community 234 - "Community 234"
+Cohesion: 0.33
+Nodes (5): chat(), str, 02_conversation_history.py ========================== Demonstrates building and, Send a message, get a reply, and update the conversation history., HumanMessage
+
+### Community 235 - "Community 235"
+Cohesion: 0.50
+Nodes (4): filter_by_role(), ModelRequest, ModelResponse, Filter tools based on customer role.
+
+### Community 236 - "Community 236"
+Cohesion: 0.67
+Nodes (3): float, Search the product catalogue by keyword, category, and price.      Use this when, search_products()
+
 ## Knowledge Gaps
 - **393 isolated node(s):** `int`, `UserContext`, `CRMContext`, `ModelRequest`, `Any` (+388 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **83 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **84 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -811,14 +832,14 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `Evaluate a mathematical expression safely.` connect `Community 5` to `Community 19`?**
   _High betweenness centrality (0.067) - this node is a cross-community bridge._
 - **Why does `calculator()` connect `Community 19` to `Community 5`?**
-  _High betweenness centrality (0.066) - this node is a cross-community bridge._
+  _High betweenness centrality (0.067) - this node is a cross-community bridge._
 - **Are the 30 inferred relationships involving `MultiServerMCPClient` (e.g. with `demo_stdio()` and `demo_http()`) actually correct?**
   _`MultiServerMCPClient` has 30 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `Performs basic arithmetic operations.`, `int`, `02_tool_runtime.py ================== Demonstrates ToolRuntime — accessing the f` to the rest of the system?**
-  _1079 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1087 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.13538461538461538 - nodes in this community are weakly interconnected._
+- **Should `Community 1` be split into smaller, more focused modules?**
+  _Cohesion score 0.06196291270918137 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
   _Cohesion score 0.05516431924882629 - nodes in this community are weakly interconnected._
-- **Should `Community 3` be split into smaller, more focused modules?**
-  _Cohesion score 0.05957767722473605 - nodes in this community are weakly interconnected._

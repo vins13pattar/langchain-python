@@ -2,6 +2,7 @@ from langchain.agents import create_agent
 from langchain.agents.middleware import ContextEditingMiddleware, ClearToolUsesEdit
 from langchain.chat_models import init_chat_model
 from langchain_core.messages import HumanMessage, AIMessage, ToolMessage
+from langchain_core.callbacks import BaseCallbackHandler
 from langgraph.checkpoint.memory import InMemorySaver
 from dotenv import load_dotenv
 import os
@@ -186,21 +187,32 @@ agent.update_state(
 )
 
 
+class ModelInputCallbackHandler(BaseCallbackHandler):
+    """Callback handler to print messages actually received by the LLM (model)."""
+    def on_chat_model_start(self, serialized, messages, **kwargs):
+        print("\n=== Messages Received by LLM during Invoke ===")
+        for i, msg in enumerate(messages[0]):
+            print(f"[{i}] {msg.type.upper()}: {msg.content}")
+        print("=============================================\n")
+        return
+
 # Before invocation
 state = agent.get_state(config=CHAT_THREAD_1)
 print("Before State: ", len(state.values.get('messages')))
 
 before_extract_tool_messages = [msg for msg in state.values.get("messages", []) if msg.type == "tool"]
-print("\n\nBefore: Number of tool messages: ", len(before_extract_tool_messages))
+print("Before: Number of tool messages: ", len(before_extract_tool_messages))
 
+# Fix: Only pass the new human message. Passing `messages + [...]` causes LangGraph's 
+# add_messages reducer to append all 60 messages again, duplicating the history.
 result = agent.invoke(
-    {"messages": messages + [HumanMessage(content="hi")]},
-    config=CHAT_THREAD_1
+    {"messages": [HumanMessage(content="hi")]},
+    config={**CHAT_THREAD_1, "callbacks": [ModelInputCallbackHandler()]}
 )
 
-# After invocation
+# After invocation (Note: ContextEditingMiddleware works transiently on model inputs, so state checkpointer is not mutated)
 state = agent.get_state(config=CHAT_THREAD_1)
-print("\n\n After State: ", len(state.values.get('messages')))
+print("\nAfter State: ", len(state.values.get('messages')))
 
 after_extract_tool_messages = [msg for msg in state.values.get("messages", []) if msg.type == "tool"]
-print("\n\nAfter: Number of tool messages: ", len(after_extract_tool_messages))
+print("After: Number of tool messages: ", len(after_extract_tool_messages))
